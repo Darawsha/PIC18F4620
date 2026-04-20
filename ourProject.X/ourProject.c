@@ -83,8 +83,8 @@
 #define HCSR04_MAX_CM     60U
 #define HCSR04_SAMPLES    3U
 #define HCSR04_OUTLIER_CM 8U
-#define HCSR04_SAMPLE_GAP_MS 60U
-#define HCSR04_SETTLE_MS  70U
+#define HCSR04_SAMPLE_GAP_MS 25U
+#define HCSR04_SETTLE_MS  40U
 #define NEAR_DISTANCE_CM  10U
 
 #define PART1_BEEP_CYCLES 120U
@@ -93,10 +93,10 @@
 #define SERVO_MIN_US      1000U
 #define SERVO_MAX_US      2000U
 #define SERVO_FRAME_US    20000U
+#define SERVO_START_US    100U
 #define SERVO_MAX_ANGLE   180U
-#define SERVO_STEP_DEG    5U
-#define SERVO_HOLD_FRAMES 8U
-#define SERVO_MOVE_MS     (SERVO_HOLD_FRAMES * (SERVO_FRAME_US / 1000U))
+#define SERVO_STEP_DEG    2U
+#define SERVO_MOVE_MS     HCSR04_SETTLE_MS
 
 #define ADC_AVG_SAMPLES   10U
 #define ADC_VREF_MV       5000UL
@@ -105,9 +105,13 @@ short counter = 0;
 unsigned char TogglePart = 0;
 unsigned char ServoAngle = 0;
 signed char ServoDirection = 1;
+volatile unsigned char ServoEnabled = 0;
+volatile unsigned char ServoPulseHigh = 0;
+volatile unsigned int ServoPulseUs = SERVO_MIN_US;
 
 void initPorts(void);
 void initTimer1(void);
+void initServoTimer3(void);
 static void delay_us_var(unsigned int us);
 static void delay_ms_var(unsigned int ms);
 static void timer1_start_us(void);
@@ -120,12 +124,48 @@ static unsigned int lm35_celsius_x10(unsigned int raw_value);
 static void sort_samples(unsigned int samples[], unsigned char count);
 static void buzzer_beep(unsigned char cycles);
 static unsigned int servo_angle_to_us(unsigned char angle);
-static void servo_pulse_us(unsigned int pulse_us);
 static void servo_set_angle(unsigned char angle);
+static void servo_start(void);
+static void servo_stop(void);
 static void radar_next_angle(void);
 static unsigned char hcsr04_read_once(unsigned int *distance_cm);
 static unsigned char hcsr04_read_filtered(unsigned int *distance_cm);
 static void execute_part2_radar(void);
+
+void interrupt isr(void) {
+    unsigned int interval_us;
+    unsigned long reload_value;
+    
+    if(PIR2bits.TMR3IF && PIE2bits.TMR3IE) {
+        PIR2bits.TMR3IF = 0;
+        
+        if(!ServoEnabled) {
+            SERVO_SIGNAL = 0;
+            ServoPulseHigh = 0;
+            interval_us = SERVO_FRAME_US;
+        }
+        else if(ServoPulseHigh) {
+            SERVO_SIGNAL = 0;
+            ServoPulseHigh = 0;
+            
+            if(ServoPulseUs < SERVO_FRAME_US) {
+                interval_us = SERVO_FRAME_US - ServoPulseUs;
+            }
+            else {
+                interval_us = SERVO_FRAME_US;
+            }
+        }
+        else {
+            SERVO_SIGNAL = 1;
+            ServoPulseHigh = 1;
+            interval_us = ServoPulseUs;
+        }
+        
+        reload_value = 65536UL - (unsigned long)interval_us;
+        TMR3H = (unsigned char)(reload_value >> 8);
+        TMR3L = (unsigned char)reload_value;
+    }
+}
 
 void soundBuzzer() {
     for (int i = 0; i < 5; i++) {
@@ -179,6 +219,7 @@ void main(void) {
     setupSerial();
     initADC();
     initTimer1();
+    initServoTimer3();
     delay_ms(100);
     
     Flags.b0 = 0;
@@ -195,16 +236,16 @@ void main(void) {
                 if(TogglePart) {
                     BUZZER = 0;
                     ALERT_LED = 0;
-                    SERVO_SIGNAL = 0;
                     HCSR04_TRIG = 0;
                     ServoAngle = 0;
                     ServoDirection = 1;
                     servo_set_angle(ServoAngle);
+                    servo_start();
                 }
                 else {
                     ALERT_LED = 0;
                     BUZZER = 0;
-                    SERVO_SIGNAL = 0;
+                    servo_stop();
                 }
                 
                 lcd_putc('\f');
@@ -286,6 +327,27 @@ void initTimer1(void) {
     PIR1bits.TMR1IF = 0;
     TMR1H = 0;
     TMR1L = 0;
+}
+
+void initServoTimer3(void) {
+    unsigned long reload_value;
+    
+    T3CON = 0x80;       // RD16 on, Fosc/4 clock, 1:1 prescaler, timer off
+    ServoEnabled = 0;
+    ServoPulseHigh = 0;
+    ServoPulseUs = SERVO_MIN_US;
+    SERVO_SIGNAL = 0;
+    
+    reload_value = 65536UL - (unsigned long)SERVO_FRAME_US;
+    TMR3H = (unsigned char)(reload_value >> 8);
+    TMR3L = (unsigned char)reload_value;
+    
+    PIR2bits.TMR3IF = 0;
+    PIE2bits.TMR3IE = 1;
+    RCONbits.IPEN = 0;  // Use the normal single interrupt vector.
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    T3CONbits.TMR3ON = 1;
 }
 
 static void delay_us_var(unsigned int us) {
@@ -420,25 +482,44 @@ static unsigned int servo_angle_to_us(unsigned char angle) {
     return (unsigned int)pulse_us;
 }
 
-static void servo_pulse_us(unsigned int pulse_us) {
-    SERVO_SIGNAL = 1;
-    delay_us_var(pulse_us);
-    SERVO_SIGNAL = 0;
-    
-    if(pulse_us < SERVO_FRAME_US) {
-        delay_us_var(SERVO_FRAME_US - pulse_us);
-    }
-}
-
 static void servo_set_angle(unsigned char angle) {
-    unsigned char i;
     unsigned int pulse_us;
+    unsigned char tmr3ie;
     
     pulse_us = servo_angle_to_us(angle);
+    ServoAngle = angle;
     
-    for(i = 0; i < SERVO_HOLD_FRAMES; i++) {
-        servo_pulse_us(pulse_us);
-    }
+    tmr3ie = PIE2bits.TMR3IE;
+    PIE2bits.TMR3IE = 0;
+    ServoPulseUs = pulse_us;
+    PIE2bits.TMR3IE = tmr3ie;
+}
+
+static void servo_start(void) {
+    unsigned char tmr3ie;
+    unsigned long reload_value;
+    
+    tmr3ie = PIE2bits.TMR3IE;
+    PIE2bits.TMR3IE = 0;
+    T3CONbits.TMR3ON = 0;
+    
+    ServoEnabled = 1;
+    ServoPulseHigh = 0;
+    SERVO_SIGNAL = 0;
+    
+    reload_value = 65536UL - (unsigned long)SERVO_START_US;
+    TMR3H = (unsigned char)(reload_value >> 8);
+    TMR3L = (unsigned char)reload_value;
+    
+    PIR2bits.TMR3IF = 0;
+    T3CONbits.TMR3ON = 1;
+    PIE2bits.TMR3IE = tmr3ie;
+}
+
+static void servo_stop(void) {
+    ServoEnabled = 0;
+    ServoPulseHigh = 0;
+    SERVO_SIGNAL = 0;
 }
 
 static void radar_next_angle(void) {
@@ -612,6 +693,7 @@ static void execute_part2_radar(void) {
     }
     
     radar_next_angle();
+    servo_set_angle(ServoAngle);
 }
 
 

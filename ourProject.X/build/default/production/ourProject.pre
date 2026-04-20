@@ -3899,9 +3899,13 @@ short counter = 0;
 unsigned char TogglePart = 0;
 unsigned char ServoAngle = 0;
 signed char ServoDirection = 1;
+volatile unsigned char ServoEnabled = 0;
+volatile unsigned char ServoPulseHigh = 0;
+volatile unsigned int ServoPulseUs = 1000U;
 
 void initPorts(void);
 void initTimer1(void);
+void initServoTimer3(void);
 static void delay_us_var(unsigned int us);
 static void delay_ms_var(unsigned int ms);
 static void timer1_start_us(void);
@@ -3914,12 +3918,48 @@ static unsigned int lm35_celsius_x10(unsigned int raw_value);
 static void sort_samples(unsigned int samples[], unsigned char count);
 static void buzzer_beep(unsigned char cycles);
 static unsigned int servo_angle_to_us(unsigned char angle);
-static void servo_pulse_us(unsigned int pulse_us);
 static void servo_set_angle(unsigned char angle);
+static void servo_start(void);
+static void servo_stop(void);
 static void radar_next_angle(void);
 static unsigned char hcsr04_read_once(unsigned int *distance_cm);
 static unsigned char hcsr04_read_filtered(unsigned int *distance_cm);
 static void execute_part2_radar(void);
+
+void interrupt isr(void) {
+unsigned int interval_us;
+unsigned long reload_value;
+
+if(PIR2bits.TMR3IF && PIE2bits.TMR3IE) {
+PIR2bits.TMR3IF = 0;
+
+if(!ServoEnabled) {
+LATCbits.LATC1 = 0;
+ServoPulseHigh = 0;
+interval_us = 20000U;
+}
+else if(ServoPulseHigh) {
+LATCbits.LATC1 = 0;
+ServoPulseHigh = 0;
+
+if(ServoPulseUs < 20000U) {
+interval_us = 20000U - ServoPulseUs;
+}
+else {
+interval_us = 20000U;
+}
+}
+else {
+LATCbits.LATC1 = 1;
+ServoPulseHigh = 1;
+interval_us = ServoPulseUs;
+}
+
+reload_value = 65536UL - (unsigned long)interval_us;
+TMR3H = (unsigned char)(reload_value >> 8);
+TMR3L = (unsigned char)reload_value;
+}
+}
 
 void soundBuzzer() {
 for (int i = 0; i < 5; i++) {
@@ -3973,6 +4013,7 @@ delay_ms(500);
 setupSerial();
 initADC();
 initTimer1();
+initServoTimer3();
 delay_ms(100);
 
 Flags.b0 = 0;
@@ -3989,16 +4030,16 @@ Flags.b0 = 1;
 if(TogglePart) {
 LATCbits.LATC2 = 0;
 LATBbits.LATB2 = 0;
-LATCbits.LATC1 = 0;
 LATCbits.LATC0 = 0;
 ServoAngle = 0;
 ServoDirection = 1;
 servo_set_angle(ServoAngle);
+servo_start();
 }
 else {
 LATBbits.LATB2 = 0;
 LATCbits.LATC2 = 0;
-LATCbits.LATC1 = 0;
+servo_stop();
 }
 
 lcd_putc('\f');
@@ -4080,6 +4121,27 @@ T1CON = 0x80;
 PIR1bits.TMR1IF = 0;
 TMR1H = 0;
 TMR1L = 0;
+}
+
+void initServoTimer3(void) {
+unsigned long reload_value;
+
+T3CON = 0x80;
+ServoEnabled = 0;
+ServoPulseHigh = 0;
+ServoPulseUs = 1000U;
+LATCbits.LATC1 = 0;
+
+reload_value = 65536UL - (unsigned long)20000U;
+TMR3H = (unsigned char)(reload_value >> 8);
+TMR3L = (unsigned char)reload_value;
+
+PIR2bits.TMR3IF = 0;
+PIE2bits.TMR3IE = 1;
+RCONbits.IPEN = 0;
+INTCONbits.PEIE = 1;
+INTCONbits.GIE = 1;
+T3CONbits.TMR3ON = 1;
 }
 
 static void delay_us_var(unsigned int us) {
@@ -4214,44 +4276,63 @@ pulse_us += ((unsigned long)angle * (2000U - 1000U)) / 180U;
 return (unsigned int)pulse_us;
 }
 
-static void servo_pulse_us(unsigned int pulse_us) {
-LATCbits.LATC1 = 1;
-delay_us_var(pulse_us);
-LATCbits.LATC1 = 0;
-
-if(pulse_us < 20000U) {
-delay_us_var(20000U - pulse_us);
-}
-}
-
 static void servo_set_angle(unsigned char angle) {
-unsigned char i;
 unsigned int pulse_us;
+unsigned char tmr3ie;
 
 pulse_us = servo_angle_to_us(angle);
+ServoAngle = angle;
 
-for(i = 0; i < 8U; i++) {
-servo_pulse_us(pulse_us);
+tmr3ie = PIE2bits.TMR3IE;
+PIE2bits.TMR3IE = 0;
+ServoPulseUs = pulse_us;
+PIE2bits.TMR3IE = tmr3ie;
 }
+
+static void servo_start(void) {
+unsigned char tmr3ie;
+unsigned long reload_value;
+
+tmr3ie = PIE2bits.TMR3IE;
+PIE2bits.TMR3IE = 0;
+T3CONbits.TMR3ON = 0;
+
+ServoEnabled = 1;
+ServoPulseHigh = 0;
+LATCbits.LATC1 = 0;
+
+reload_value = 65536UL - (unsigned long)100U;
+TMR3H = (unsigned char)(reload_value >> 8);
+TMR3L = (unsigned char)reload_value;
+
+PIR2bits.TMR3IF = 0;
+T3CONbits.TMR3ON = 1;
+PIE2bits.TMR3IE = tmr3ie;
+}
+
+static void servo_stop(void) {
+ServoEnabled = 0;
+ServoPulseHigh = 0;
+LATCbits.LATC1 = 0;
 }
 
 static void radar_next_angle(void) {
 if(ServoDirection > 0) {
-if(ServoAngle >= (180U - 5U)) {
+if(ServoAngle >= (180U - 2U)) {
 ServoAngle = 180U;
 ServoDirection = -1;
 }
 else {
-ServoAngle += 5U;
+ServoAngle += 2U;
 }
 }
 else {
-if(ServoAngle <= 5U) {
+if(ServoAngle <= 2U) {
 ServoAngle = 0;
 ServoDirection = 1;
 }
 else {
-ServoAngle -= 5U;
+ServoAngle -= 2U;
 }
 }
 }
@@ -4322,7 +4403,7 @@ if(hcsr04_read_once(&reading)) {
 samples[valid] = reading;
 valid++;
 }
-delay_ms_var(60U);
+delay_ms_var(25U);
 }
 
 if(valid < 3U) {
@@ -4367,11 +4448,11 @@ unsigned int distance_cm;
 unsigned char angle_now;
 
 angle_now = ServoAngle;
-sprintf(SerialBuffer, "M,%u,%u\r\n", angle_now, (unsigned int)(8U * (20000U / 1000U)));
+sprintf(SerialBuffer, "M,%u,%u\r\n", angle_now, (unsigned int)40U);
 send_string_no_lib(SerialBuffer);
 
 servo_set_angle(angle_now);
-delay_ms_var(70U);
+delay_ms_var(40U);
 
 lcd_gotoxy(0, 0);
 if(hcsr04_read_filtered(&distance_cm)) {
@@ -4406,6 +4487,7 @@ lcd_puts("Radar Sweep     ");
 }
 
 radar_next_angle();
+servo_set_angle(ServoAngle);
 }
 
 

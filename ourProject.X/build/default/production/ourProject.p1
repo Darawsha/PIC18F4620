@@ -8,7 +8,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 "7 my_debounce.h
 [s S268 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S268 . b0 b1 b2 b3 b4 b5 b6 b7 ]
-"1108 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4620.h
+"2798 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4620.h
+[s S98 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S98 . CCP2IF TMR3IF HLVDIF BCLIF EEIF . CMIF OSCFIF ]
+"2808
+[s S99 :2 `uc 1 :1 `uc 1 ]
+[n S99 . . LVDIF ]
+"2797
+[u S97 `S98 1 `S99 1 ]
+[n S97 . . . ]
+"2813
+[v _PIR2bits `VS97 ~T0 @X0 0 e@4001 ]
+"2732
+[s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 . CCP2IE TMR3IE HLVDIE BCLIE EEIE . CMIE OSCFIE ]
+"2742
+[s S96 :2 `uc 1 :1 `uc 1 ]
+[n S96 . . LVDIE ]
+"2731
+[u S94 `S95 1 `S96 1 ]
+[n S94 . . . ]
+"2747
+[v _PIE2bits `VS94 ~T0 @X0 0 e@4000 ]
+"1108
 [s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "1118
@@ -19,6 +41,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S43 . . . ]
 "1129
 [v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
+"3653
+[v _TMR3H `Vuc ~T0 @X0 0 e@4019 ]
+"3646
+[v _TMR3L `Vuc ~T0 @X0 0 e@4018 ]
 "32 lcd_x8.h
 [v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
 "36
@@ -26,7 +52,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "37
 [v _lcd_putc `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
-"109 ourProject.c
+"112 ourProject.c
 [v _initPorts `(v ~T0 @X0 0 ef ]
 "35 lcd_x8.h
 [v _lcd_init `(v ~T0 @X0 0 ef ]
@@ -36,8 +62,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setupSerial `(v ~T0 @X0 0 ef ]
 "7 my_adc.h
 [v _initADC `(v ~T0 @X0 0 ef ]
-"110 ourProject.c
+"113 ourProject.c
 [v _initTimer1 `(v ~T0 @X0 0 ef ]
+"114
+[v _initServoTimer3 `(v ~T0 @X0 0 ef ]
 "193 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4620.h
 [s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S11 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -66,8 +94,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S40 . . . ]
 "1017
 [v _LATBbits `VS40 ~T0 @X0 0 e@3978 ]
-"124 ourProject.c
+"127 ourProject.c
 [v _servo_set_angle `(v ~T0 @X0 0 sf1`uc ]
+"128
+[v _servo_start `(v ~T0 @X0 0 sf ]
+"129
+[v _servo_stop `(v ~T0 @X0 0 sf ]
 "3029 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4620.h
 [s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
@@ -91,11 +123,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S106 . . . . . . . ]
 "3059
 [v _RCSTAbits `VS106 ~T0 @X0 0 e@4011 ]
-"117 ourProject.c
+"121 ourProject.c
 [v _adc_average_raw `(ui ~T0 @X0 0 sf2`uc`uc ]
-"119
+"123
 [v _lm35_celsius_x10 `(ui ~T0 @X0 0 sf1`ui ]
-"118
+"122
 [v _adc_raw_to_mv `(ui ~T0 @X0 0 sf1`ui ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
@@ -105,7 +137,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _read_byte_no_lib `(uc ~T0 @X0 0 ef ]
 "10
 [v _send_byte_no_lib `(v ~T0 @X0 0 ef1`uc ]
-"128 ourProject.c
+"133 ourProject.c
 [v _execute_part2_radar `(v ~T0 @X0 0 sf ]
 "5222 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4620.h
 [v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
@@ -124,6 +156,68 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR1H `Vuc ~T0 @X0 0 e@4047 ]
 "5332
 [v _TMR1L `Vuc ~T0 @X0 0 e@4046 ]
+"3527
+[v _T3CON `Vuc ~T0 @X0 0 e@4017 ]
+"5352
+[s S221 :1 `uc 1 ]
+[n S221 . NOT_BOR ]
+"5355
+[s S222 :1 `uc 1 :1 `uc 1 ]
+[n S222 . . NOT_POR ]
+"5359
+[s S223 :2 `uc 1 :1 `uc 1 ]
+[n S223 . . NOT_PD ]
+"5363
+[s S224 :3 `uc 1 :1 `uc 1 ]
+[n S224 . . NOT_TO ]
+"5367
+[s S225 :4 `uc 1 :1 `uc 1 ]
+[n S225 . . NOT_RI ]
+"5371
+[s S226 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S226 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"5381
+[s S227 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S227 . BOR POR PD TO RI ]
+"5351
+[u S220 `S221 1 `S222 1 `S223 1 `S224 1 `S225 1 `S226 1 `S227 1 ]
+[n S220 . . . . . . . . ]
+"5389
+[v _RCONbits `VS220 ~T0 @X0 0 e@4048 ]
+"6378
+[s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6388
+[s S259 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S259 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6398
+[s S260 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S260 . . GIEL GIEH ]
+"6377
+[u S257 `S258 1 `S259 1 `S260 1 ]
+[n S257 . . . . ]
+"6404
+[v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
+"3533
+[s S131 :2 `uc 1 :1 `uc 1 ]
+[n S131 . . NOT_T3SYNC ]
+"3537
+[s S132 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S132 . TMR3ON TMR3CS nT3SYNC T3CCP1 T3CKPS T3CCP2 RD16 ]
+"3546
+[s S133 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S133 . . T3SYNC . T3CKPS0 T3CKPS1 ]
+"3553
+[s S134 :3 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S134 . . SOSCEN3 . RD163 ]
+"3559
+[s S135 :7 `uc 1 :1 `uc 1 ]
+[n S135 . . T3RD16 ]
+"3532
+[u S130 `S131 1 `S132 1 `S133 1 `S134 1 `S135 1 ]
+[n S130 . . . . . . ]
+"3564
+[v _T3CONbits `VS130 ~T0 @X0 0 e@4017 ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
 [v __delay `JF2882 ~T0 @X0 0 e ]
@@ -3062,1578 +3156,1804 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1 `i `c
 ]
 [; ;ourProject.c: 107: signed char ServoDirection = 1;
-[; ;ourProject.c: 109: void initPorts(void);
-[; ;ourProject.c: 110: void initTimer1(void);
-[; ;ourProject.c: 111: static void delay_us_var(unsigned int us);
-[; ;ourProject.c: 112: static void delay_ms_var(unsigned int ms);
-[; ;ourProject.c: 113: static void timer1_start_us(void);
-[; ;ourProject.c: 114: static void timer1_stop(void);
-[; ;ourProject.c: 115: static unsigned int timer1_read_us(void);
-[; ;ourProject.c: 116: static unsigned char timer1_timeout(unsigned int timeout_us);
-[; ;ourProject.c: 117: static unsigned int adc_average_raw(unsigned char channel, unsigned char samples);
-[; ;ourProject.c: 118: static unsigned int adc_raw_to_mv(unsigned int raw_value);
-[; ;ourProject.c: 119: static unsigned int lm35_celsius_x10(unsigned int raw_value);
-[; ;ourProject.c: 120: static void sort_samples(unsigned int samples[], unsigned char count);
-[; ;ourProject.c: 121: static void buzzer_beep(unsigned char cycles);
-[; ;ourProject.c: 122: static unsigned int servo_angle_to_us(unsigned char angle);
-[; ;ourProject.c: 123: static void servo_pulse_us(unsigned int pulse_us);
-[; ;ourProject.c: 124: static void servo_set_angle(unsigned char angle);
-[; ;ourProject.c: 125: static void radar_next_angle(void);
-[; ;ourProject.c: 126: static unsigned char hcsr04_read_once(unsigned int *distance_cm);
-[; ;ourProject.c: 127: static unsigned char hcsr04_read_filtered(unsigned int *distance_cm);
-[; ;ourProject.c: 128: static void execute_part2_radar(void);
-"130
+"108
+[v _ServoEnabled `Vuc ~T0 @X0 1 e ]
+[i _ServoEnabled
+-> -> 0 `i `uc
+]
+[; ;ourProject.c: 108: volatile unsigned char ServoEnabled = 0;
+"109
+[v _ServoPulseHigh `Vuc ~T0 @X0 1 e ]
+[i _ServoPulseHigh
+-> -> 0 `i `uc
+]
+[; ;ourProject.c: 109: volatile unsigned char ServoPulseHigh = 0;
+"110
+[v _ServoPulseUs `Vui ~T0 @X0 1 e ]
+[i _ServoPulseUs
+-> 1000 `ui
+]
+[; ;ourProject.c: 110: volatile unsigned int ServoPulseUs = 1000U;
+[; ;ourProject.c: 112: void initPorts(void);
+[; ;ourProject.c: 113: void initTimer1(void);
+[; ;ourProject.c: 114: void initServoTimer3(void);
+[; ;ourProject.c: 115: static void delay_us_var(unsigned int us);
+[; ;ourProject.c: 116: static void delay_ms_var(unsigned int ms);
+[; ;ourProject.c: 117: static void timer1_start_us(void);
+[; ;ourProject.c: 118: static void timer1_stop(void);
+[; ;ourProject.c: 119: static unsigned int timer1_read_us(void);
+[; ;ourProject.c: 120: static unsigned char timer1_timeout(unsigned int timeout_us);
+[; ;ourProject.c: 121: static unsigned int adc_average_raw(unsigned char channel, unsigned char samples);
+[; ;ourProject.c: 122: static unsigned int adc_raw_to_mv(unsigned int raw_value);
+[; ;ourProject.c: 123: static unsigned int lm35_celsius_x10(unsigned int raw_value);
+[; ;ourProject.c: 124: static void sort_samples(unsigned int samples[], unsigned char count);
+[; ;ourProject.c: 125: static void buzzer_beep(unsigned char cycles);
+[; ;ourProject.c: 126: static unsigned int servo_angle_to_us(unsigned char angle);
+[; ;ourProject.c: 127: static void servo_set_angle(unsigned char angle);
+[; ;ourProject.c: 128: static void servo_start(void);
+[; ;ourProject.c: 129: static void servo_stop(void);
+[; ;ourProject.c: 130: static void radar_next_angle(void);
+[; ;ourProject.c: 131: static unsigned char hcsr04_read_once(unsigned int *distance_cm);
+[; ;ourProject.c: 132: static unsigned char hcsr04_read_filtered(unsigned int *distance_cm);
+[; ;ourProject.c: 133: static void execute_part2_radar(void);
+[v $root$_isr `(v ~T0 @X0 0 e ]
+[v F3079 `(v ~T0 @X0 1 tf ]
+"135
+[v _isr `IF3079 ~T0 @X0 1 e ]
+{
+[; ;ourProject.c: 135: void interrupt isr(void) {
+[e :U _isr ]
+[f ]
+"136
+[v _interval_us `ui ~T0 @X0 1 a ]
+"137
+[v _reload_value `ul ~T0 @X0 1 a ]
+[; ;ourProject.c: 136: unsigned int interval_us;
+[; ;ourProject.c: 137: unsigned long reload_value;
+[; ;ourProject.c: 139: if(PIR2bits.TMR3IF && PIE2bits.TMR3IE) {
+"139
+[e $ ! && != -> . . _PIR2bits 0 1 `i -> -> -> 0 `i `Vuc `i != -> . . _PIE2bits 0 1 `i -> -> -> 0 `i `Vuc `i 270  ]
+{
+[; ;ourProject.c: 140: PIR2bits.TMR3IF = 0;
+"140
+[e = . . _PIR2bits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 142: if(!ServoEnabled) {
+"142
+[e $ ! ! != -> _ServoEnabled `i -> -> -> 0 `i `Vuc `i 271  ]
+{
+[; ;ourProject.c: 143: LATCbits.LATC1 = 0;
+"143
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 144: ServoPulseHigh = 0;
+"144
+[e = _ServoPulseHigh -> -> 0 `i `uc ]
+[; ;ourProject.c: 145: interval_us = 20000U;
+"145
+[e = _interval_us -> 20000 `ui ]
+"146
+}
+[; ;ourProject.c: 146: }
+[e $U 272  ]
+"147
+[e :U 271 ]
+[; ;ourProject.c: 147: else if(ServoPulseHigh) {
+[e $ ! != -> _ServoPulseHigh `i -> -> -> 0 `i `Vuc `i 273  ]
+{
+[; ;ourProject.c: 148: LATCbits.LATC1 = 0;
+"148
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 149: ServoPulseHigh = 0;
+"149
+[e = _ServoPulseHigh -> -> 0 `i `uc ]
+[; ;ourProject.c: 151: if(ServoPulseUs < 20000U) {
+"151
+[e $ ! < _ServoPulseUs -> 20000 `ui 274  ]
+{
+[; ;ourProject.c: 152: interval_us = 20000U - ServoPulseUs;
+"152
+[e = _interval_us - -> 20000 `ui _ServoPulseUs ]
+"153
+}
+[; ;ourProject.c: 153: }
+[e $U 275  ]
+"154
+[e :U 274 ]
+[; ;ourProject.c: 154: else {
+{
+[; ;ourProject.c: 155: interval_us = 20000U;
+"155
+[e = _interval_us -> 20000 `ui ]
+"156
+}
+[e :U 275 ]
+"157
+}
+[; ;ourProject.c: 156: }
+[; ;ourProject.c: 157: }
+[e $U 276  ]
+"158
+[e :U 273 ]
+[; ;ourProject.c: 158: else {
+{
+[; ;ourProject.c: 159: LATCbits.LATC1 = 1;
+"159
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+[; ;ourProject.c: 160: ServoPulseHigh = 1;
+"160
+[e = _ServoPulseHigh -> -> 1 `i `uc ]
+[; ;ourProject.c: 161: interval_us = ServoPulseUs;
+"161
+[e = _interval_us _ServoPulseUs ]
+"162
+}
+[e :U 276 ]
+[e :U 272 ]
+[; ;ourProject.c: 162: }
+[; ;ourProject.c: 164: reload_value = 65536UL - (unsigned long)interval_us;
+"164
+[e = _reload_value - -> 65536 `ul -> _interval_us `ul ]
+[; ;ourProject.c: 165: TMR3H = (unsigned char)(reload_value >> 8);
+"165
+[e = _TMR3H -> >> _reload_value -> 8 `i `uc ]
+[; ;ourProject.c: 166: TMR3L = (unsigned char)reload_value;
+"166
+[e = _TMR3L -> _reload_value `uc ]
+"167
+}
+[e :U 270 ]
+[; ;ourProject.c: 167: }
+[; ;ourProject.c: 168: }
+"168
+[e :UE 269 ]
+}
+"170
 [v _soundBuzzer `(v ~T0 @X0 1 ef ]
 {
-[; ;ourProject.c: 130: void soundBuzzer() {
+[; ;ourProject.c: 170: void soundBuzzer() {
 [e :U _soundBuzzer ]
 [f ]
-[; ;ourProject.c: 131: for (int i = 0; i < 5; i++) {
-"131
+[; ;ourProject.c: 171: for (int i = 0; i < 5; i++) {
+"171
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 270  ]
-[e $U 271  ]
-[e :U 270 ]
+[e $ < _i -> 5 `i 278  ]
+[e $U 279  ]
+[e :U 278 ]
 {
-[; ;ourProject.c: 132: LATCbits.LATC2 = 1;
-"132
+[; ;ourProject.c: 172: LATCbits.LATC2 = 1;
+"172
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;ourProject.c: 133: delay_ms(500);
-"133
+[; ;ourProject.c: 173: delay_ms(500);
+"173
 [e ( _delay_ms (1 -> -> 500 `i `ui ]
-[; ;ourProject.c: 134: LATCbits.LATC2 = 0;
-"134
+[; ;ourProject.c: 174: LATCbits.LATC2 = 0;
+"174
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 135: delay_ms(500);
-"135
+[; ;ourProject.c: 175: delay_ms(500);
+"175
 [e ( _delay_ms (1 -> -> 500 `i `ui ]
-[; ;ourProject.c: 136: asm(" clrwdt");
-"136
+[; ;ourProject.c: 176: asm(" clrwdt");
+"176
 [; <"  clrwdt ;# ">
-"137
+"177
 }
-"131
+"171
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 270  ]
-[e :U 271 ]
-"137
+[e $ < _i -> 5 `i 278  ]
+[e :U 279 ]
+"177
 }
-[; ;ourProject.c: 137: }
-[; ;ourProject.c: 139: }
-"139
-[e :UE 269 ]
+[; ;ourProject.c: 177: }
+[; ;ourProject.c: 179: }
+"179
+[e :UE 277 ]
 }
-"141
+"181
 [v _lcd_clear_line `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;ourProject.c: 141: void lcd_clear_line(unsigned char row) {
+[; ;ourProject.c: 181: void lcd_clear_line(unsigned char row) {
 [e :U _lcd_clear_line ]
 [v _row `uc ~T0 @X0 1 r1 ]
 [f ]
-"142
+"182
 [v _i `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 142: unsigned char i;
-[; ;ourProject.c: 144: lcd_gotoxy(0, row);
-"144
+[; ;ourProject.c: 182: unsigned char i;
+[; ;ourProject.c: 184: lcd_gotoxy(0, row);
+"184
 [e ( _lcd_gotoxy (2 , -> -> 0 `i `uc _row ]
-[; ;ourProject.c: 145: for (i = 0; i < 16; i++) {
-"145
+[; ;ourProject.c: 185: for (i = 0; i < 16; i++) {
+"185
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 274  ]
-[e $U 275  ]
-[e :U 274 ]
+[e $ < -> _i `i -> 16 `i 282  ]
+[e $U 283  ]
+[e :U 282 ]
 {
-[; ;ourProject.c: 146: lcd_putc(' ');
-"146
+[; ;ourProject.c: 186: lcd_putc(' ');
+"186
 [e ( _lcd_putc (1 -> -> 32 `ui `uc ]
-"147
+"187
 }
-"145
+"185
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 274  ]
-[e :U 275 ]
-"147
+[e $ < -> _i `i -> 16 `i 282  ]
+[e :U 283 ]
+"187
 }
-[; ;ourProject.c: 147: }
-[; ;ourProject.c: 148: lcd_gotoxy(0, row);
-"148
+[; ;ourProject.c: 187: }
+[; ;ourProject.c: 188: lcd_gotoxy(0, row);
+"188
 [e ( _lcd_gotoxy (2 , -> -> 0 `i `uc _row ]
-[; ;ourProject.c: 149: }
-"149
-[e :UE 273 ]
+[; ;ourProject.c: 189: }
+"189
+[e :UE 281 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"151
+"191
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;ourProject.c: 151: void main(void) {
+[; ;ourProject.c: 191: void main(void) {
 [e :U _main ]
 [f ]
-"153
-[v _Buffer `uc ~T0 @X0 -> 32 `i a ]
-"154
-[v _temp_raw `ui ~T0 @X0 1 a ]
-"155
-[v _pot_raw `ui ~T0 @X0 1 a ]
-"156
-[v _temp_x10 `ui ~T0 @X0 1 a ]
-"157
-[v _volt_mv `ui ~T0 @X0 1 a ]
-"158
-[v _volt_x10 `ui ~T0 @X0 1 a ]
-"159
-[v _receivedMsg `uc ~T0 @X0 1 a ]
-"161
-[v _update_timer `i ~T0 @X0 1 a ]
-[; ;ourProject.c: 153: char Buffer[32];
-[; ;ourProject.c: 154: unsigned int temp_raw;
-[; ;ourProject.c: 155: unsigned int pot_raw;
-[; ;ourProject.c: 156: unsigned int temp_x10;
-[; ;ourProject.c: 157: unsigned int volt_mv;
-[; ;ourProject.c: 158: unsigned int volt_x10;
-[; ;ourProject.c: 159: char receivedMsg;
-[; ;ourProject.c: 161: int update_timer = 16;
-[e = _update_timer -> 16 `i ]
-[; ;ourProject.c: 163: initPorts();
-"163
-[e ( _initPorts ..  ]
-[; ;ourProject.c: 165: delay_ms(100);
-"165
-[e ( _delay_ms (1 -> -> 100 `i `ui ]
-[; ;ourProject.c: 167: lcd_init();
-"167
-[e ( _lcd_init ..  ]
-[; ;ourProject.c: 168: delay_ms(20);
-"168
-[e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;ourProject.c: 170: lcd_putc('\f');
-"170
-[e ( _lcd_putc (1 -> -> 12 `ui `uc ]
-[; ;ourProject.c: 171: delay_ms(5);
-"171
-[e ( _delay_ms (1 -> -> 5 `i `ui ]
-[; ;ourProject.c: 172: lcd_putc('\f');
-"172
-[e ( _lcd_putc (1 -> -> 12 `ui `uc ]
-[; ;ourProject.c: 173: delay_ms(5);
-"173
-[e ( _delay_ms (1 -> -> 5 `i `ui ]
-[; ;ourProject.c: 175: lcd_gotoxy(0,0);
-"175
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;ourProject.c: 176: lcd_puts("Starting...");
-"176
-[e ( _lcd_puts (1 :s 1C ]
-[; ;ourProject.c: 177: delay_ms(500);
-"177
-[e ( _delay_ms (1 -> -> 500 `i `ui ]
-[; ;ourProject.c: 179: setupSerial();
-"179
-[e ( _setupSerial ..  ]
-[; ;ourProject.c: 180: initADC();
-"180
-[e ( _initADC ..  ]
-[; ;ourProject.c: 181: initTimer1();
-"181
-[e ( _initTimer1 ..  ]
-[; ;ourProject.c: 182: delay_ms(100);
-"182
-[e ( _delay_ms (1 -> -> 100 `i `ui ]
-[; ;ourProject.c: 184: Flags.b0 = 0;
-"184
-[e = . _Flags 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 185: counter = 0;
-"185
-[e = _counter -> -> 0 `i `s ]
-[; ;ourProject.c: 187: while(1){
-"187
-[e :U 279 ]
-{
-[; ;ourProject.c: 188: asm(" clrwdt");
-"188
-[; <"  clrwdt ;# ">
-[; ;ourProject.c: 190: if(PORTBbits.RB0 == 0) {
-"190
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 281  ]
-{
-[; ;ourProject.c: 191: delay_ms(20);
-"191
-[e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;ourProject.c: 192: if(PORTBbits.RB0 == 0 && Flags.b0 == 0) {
-"192
-[e $ ! && == -> . . _PORTBbits 0 0 `i -> 0 `i == -> . _Flags 0 `i -> 0 `i 282  ]
-{
-[; ;ourProject.c: 193: TogglePart = !TogglePart;
 "193
-[e = _TogglePart -> -> ! != -> _TogglePart `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;ourProject.c: 194: Flags.b0 = 1;
+[v _Buffer `uc ~T0 @X0 -> 32 `i a ]
 "194
-[e = . _Flags 0 -> -> 1 `i `uc ]
-[; ;ourProject.c: 195: if(TogglePart) {
+[v _temp_raw `ui ~T0 @X0 1 a ]
 "195
-[e $ ! != -> _TogglePart `i -> -> -> 0 `i `uc `i 283  ]
-{
-[; ;ourProject.c: 196: LATCbits.LATC2 = 0;
+[v _pot_raw `ui ~T0 @X0 1 a ]
 "196
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 197: LATBbits.LATB2 = 0;
+[v _temp_x10 `ui ~T0 @X0 1 a ]
 "197
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 198: LATCbits.LATC1 = 0;
+[v _volt_mv `ui ~T0 @X0 1 a ]
 "198
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;ourProject.c: 199: LATCbits.LATC0 = 0;
+[v _volt_x10 `ui ~T0 @X0 1 a ]
 "199
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 200: ServoAngle = 0;
-"200
-[e = _ServoAngle -> -> 0 `i `uc ]
-[; ;ourProject.c: 201: ServoDirection = 1;
+[v _receivedMsg `uc ~T0 @X0 1 a ]
 "201
-[e = _ServoDirection -> -> 1 `i `c ]
-[; ;ourProject.c: 202: servo_set_angle(ServoAngle);
-"202
-[e ( _servo_set_angle (1 _ServoAngle ]
+[v _update_timer `i ~T0 @X0 1 a ]
+[; ;ourProject.c: 193: char Buffer[32];
+[; ;ourProject.c: 194: unsigned int temp_raw;
+[; ;ourProject.c: 195: unsigned int pot_raw;
+[; ;ourProject.c: 196: unsigned int temp_x10;
+[; ;ourProject.c: 197: unsigned int volt_mv;
+[; ;ourProject.c: 198: unsigned int volt_x10;
+[; ;ourProject.c: 199: char receivedMsg;
+[; ;ourProject.c: 201: int update_timer = 16;
+[e = _update_timer -> 16 `i ]
+[; ;ourProject.c: 203: initPorts();
 "203
-}
-[; ;ourProject.c: 203: }
-[e $U 284  ]
-"204
-[e :U 283 ]
-[; ;ourProject.c: 204: else {
-{
-[; ;ourProject.c: 205: LATBbits.LATB2 = 0;
+[e ( _initPorts ..  ]
+[; ;ourProject.c: 205: delay_ms(100);
 "205
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 206: LATCbits.LATC2 = 0;
-"206
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 207: LATCbits.LATC1 = 0;
+[e ( _delay_ms (1 -> -> 100 `i `ui ]
+[; ;ourProject.c: 207: lcd_init();
 "207
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[e ( _lcd_init ..  ]
+[; ;ourProject.c: 208: delay_ms(20);
 "208
-}
-[e :U 284 ]
-[; ;ourProject.c: 208: }
+[e ( _delay_ms (1 -> -> 20 `i `ui ]
 [; ;ourProject.c: 210: lcd_putc('\f');
 "210
 [e ( _lcd_putc (1 -> -> 12 `ui `uc ]
 [; ;ourProject.c: 211: delay_ms(5);
 "211
 [e ( _delay_ms (1 -> -> 5 `i `ui ]
-[; ;ourProject.c: 212: update_timer = 16;
+[; ;ourProject.c: 212: lcd_putc('\f');
 "212
-[e = _update_timer -> 16 `i ]
-[; ;ourProject.c: 213: counter = 0;
+[e ( _lcd_putc (1 -> -> 12 `ui `uc ]
+[; ;ourProject.c: 213: delay_ms(5);
 "213
-[e = _counter -> -> 0 `i `s ]
-"214
-}
-[e :U 282 ]
+[e ( _delay_ms (1 -> -> 5 `i `ui ]
+[; ;ourProject.c: 215: lcd_gotoxy(0,0);
 "215
-}
-[; ;ourProject.c: 214: }
-[; ;ourProject.c: 215: }
-[e $U 285  ]
-"216
-[e :U 281 ]
-[; ;ourProject.c: 216: else {
-{
-[; ;ourProject.c: 217: Flags.b0 = 0;
-"217
-[e = . _Flags 0 -> -> 0 `i `uc ]
-"218
-}
-[e :U 285 ]
-[; ;ourProject.c: 218: }
-[; ;ourProject.c: 220: if(RCSTAbits.OERR) {
-"220
-[e $ ! != -> . . _RCSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 286  ]
-{
-[; ;ourProject.c: 221: RCSTAbits.CREN = 0;
-"221
-[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
-[; ;ourProject.c: 222: RCSTAbits.CREN = 1;
-"222
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-"223
-}
-[e :U 286 ]
-[; ;ourProject.c: 223: }
-[; ;ourProject.c: 226: if(TogglePart == 0) {
-"226
-[e $ ! == -> _TogglePart `i -> 0 `i 287  ]
-{
-[; ;ourProject.c: 229: if(update_timer >= 16) {
-"229
-[e $ ! >= _update_timer -> 16 `i 288  ]
-{
-[; ;ourProject.c: 230: temp_raw = adc_average_raw(ADC.CH1, 10U);
-"230
-[e = _temp_raw ( _adc_average_raw (2 , . _ADC 1 -> -> 10 `ui `uc ]
-[; ;ourProject.c: 231: temp_x10 = lm35_celsius_x10(temp_raw);
-"231
-[e = _temp_x10 ( _lm35_celsius_x10 (1 _temp_raw ]
-[; ;ourProject.c: 233: pot_raw = adc_average_raw(ADC.CH0, 10U);
-"233
-[e = _pot_raw ( _adc_average_raw (2 , . _ADC 0 -> -> 10 `ui `uc ]
-[; ;ourProject.c: 234: volt_mv = adc_raw_to_mv(pot_raw);
-"234
-[e = _volt_mv ( _adc_raw_to_mv (1 _pot_raw ]
-[; ;ourProject.c: 235: volt_x10 = (volt_mv + 50U) / 100U;
-"235
-[e = _volt_x10 / + _volt_mv -> 50 `ui -> 100 `ui ]
-[; ;ourProject.c: 237: lcd_gotoxy(0, 0);
-"237
 [e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;ourProject.c: 238: sprintf(Buffer, "T:%3u.%uC V:%u.%uV ",
-[; ;ourProject.c: 239: temp_x10 / 10U,
-[; ;ourProject.c: 240: temp_x10 % 10U,
-[; ;ourProject.c: 241: volt_x10 / 10U,
-[; ;ourProject.c: 242: volt_x10 % 10U);
+[; ;ourProject.c: 216: lcd_puts("Starting...");
+"216
+[e ( _lcd_puts (1 :s 1C ]
+[; ;ourProject.c: 217: delay_ms(500);
+"217
+[e ( _delay_ms (1 -> -> 500 `i `ui ]
+[; ;ourProject.c: 219: setupSerial();
+"219
+[e ( _setupSerial ..  ]
+[; ;ourProject.c: 220: initADC();
+"220
+[e ( _initADC ..  ]
+[; ;ourProject.c: 221: initTimer1();
+"221
+[e ( _initTimer1 ..  ]
+[; ;ourProject.c: 222: initServoTimer3();
+"222
+[e ( _initServoTimer3 ..  ]
+[; ;ourProject.c: 223: delay_ms(100);
+"223
+[e ( _delay_ms (1 -> -> 100 `i `ui ]
+[; ;ourProject.c: 225: Flags.b0 = 0;
+"225
+[e = . _Flags 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 226: counter = 0;
+"226
+[e = _counter -> -> 0 `i `s ]
+[; ;ourProject.c: 228: while(1){
+"228
+[e :U 287 ]
+{
+[; ;ourProject.c: 229: asm(" clrwdt");
+"229
+[; <"  clrwdt ;# ">
+[; ;ourProject.c: 231: if(PORTBbits.RB0 == 0) {
+"231
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 289  ]
+{
+[; ;ourProject.c: 232: delay_ms(20);
+"232
+[e ( _delay_ms (1 -> -> 20 `i `ui ]
+[; ;ourProject.c: 233: if(PORTBbits.RB0 == 0 && Flags.b0 == 0) {
+"233
+[e $ ! && == -> . . _PORTBbits 0 0 `i -> 0 `i == -> . _Flags 0 `i -> 0 `i 290  ]
+{
+[; ;ourProject.c: 234: TogglePart = !TogglePart;
+"234
+[e = _TogglePart -> -> ! != -> _TogglePart `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;ourProject.c: 235: Flags.b0 = 1;
+"235
+[e = . _Flags 0 -> -> 1 `i `uc ]
+[; ;ourProject.c: 236: if(TogglePart) {
+"236
+[e $ ! != -> _TogglePart `i -> -> -> 0 `i `uc `i 291  ]
+{
+[; ;ourProject.c: 237: LATCbits.LATC2 = 0;
+"237
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 238: LATBbits.LATB2 = 0;
+"238
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 239: LATCbits.LATC0 = 0;
+"239
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 240: ServoAngle = 0;
+"240
+[e = _ServoAngle -> -> 0 `i `uc ]
+[; ;ourProject.c: 241: ServoDirection = 1;
+"241
+[e = _ServoDirection -> -> 1 `i `c ]
+[; ;ourProject.c: 242: servo_set_angle(ServoAngle);
 "242
-[e ( _sprintf (1 , , , , (. , &U _Buffer :s 2C / _temp_x10 -> 10 `ui % _temp_x10 -> 10 `ui / _volt_x10 -> 10 `ui % _volt_x10 -> 10 `ui ]
-[; ;ourProject.c: 243: lcd_puts(Buffer);
+[e ( _servo_set_angle (1 _ServoAngle ]
+[; ;ourProject.c: 243: servo_start();
 "243
-[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
-[; ;ourProject.c: 244: lcd_gotoxy(0, 1);
+[e ( _servo_start ..  ]
 "244
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;ourProject.c: 245: update_timer = 0;
-"245
-[e = _update_timer -> 0 `i ]
-"246
 }
-[e :U 288 ]
-[; ;ourProject.c: 246: }
-[; ;ourProject.c: 249: if(is_byte_available()){
+[; ;ourProject.c: 244: }
+[e $U 292  ]
+"245
+[e :U 291 ]
+[; ;ourProject.c: 245: else {
+{
+[; ;ourProject.c: 246: LATBbits.LATB2 = 0;
+"246
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 247: LATCbits.LATC2 = 0;
+"247
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 248: servo_stop();
+"248
+[e ( _servo_stop ..  ]
 "249
-[e $ ! != -> ( _is_byte_available ..  `i -> -> -> 0 `i `uc `i 289  ]
-{
-[; ;ourProject.c: 250: receivedMsg = read_byte_no_lib();
-"250
-[e = _receivedMsg ( _read_byte_no_lib ..  ]
-[; ;ourProject.c: 251: send_byte_no_lib(receivedMsg);
+}
+[e :U 292 ]
+[; ;ourProject.c: 249: }
+[; ;ourProject.c: 251: lcd_putc('\f');
 "251
-[e ( _send_byte_no_lib (1 _receivedMsg ]
-[; ;ourProject.c: 253: if(receivedMsg == 'B') {
+[e ( _lcd_putc (1 -> -> 12 `ui `uc ]
+[; ;ourProject.c: 252: delay_ms(5);
+"252
+[e ( _delay_ms (1 -> -> 5 `i `ui ]
+[; ;ourProject.c: 253: update_timer = 16;
 "253
-[e $ ! == -> _receivedMsg `ui -> 66 `ui 290  ]
-{
-[; ;ourProject.c: 254: soundBuzzer();
+[e = _update_timer -> 16 `i ]
+[; ;ourProject.c: 254: counter = 0;
 "254
-[e ( _soundBuzzer ..  ]
+[e = _counter -> -> 0 `i `s ]
 "255
 }
 [e :U 290 ]
+"256
+}
 [; ;ourProject.c: 255: }
-[; ;ourProject.c: 258: if(counter >= 16){
-"258
-[e $ ! >= -> _counter `i -> 16 `i 291  ]
-{
-[; ;ourProject.c: 259: lcd_clear_line(1);
-"259
-[e ( _lcd_clear_line (1 -> -> 1 `i `uc ]
-[; ;ourProject.c: 260: counter = 0;
-"260
-[e = _counter -> -> 0 `i `s ]
-"261
-}
-[e :U 291 ]
-[; ;ourProject.c: 261: }
-[; ;ourProject.c: 263: lcd_gotoxy(counter, 1);
-"263
-[e ( _lcd_gotoxy (2 , -> _counter `uc -> -> 1 `i `uc ]
-[; ;ourProject.c: 264: lcd_putc(receivedMsg);
-"264
-[e ( _lcd_putc (1 _receivedMsg ]
-[; ;ourProject.c: 265: counter++;
-"265
-[e ++ _counter -> -> 1 `i `s ]
-"267
-}
+[; ;ourProject.c: 256: }
+[e $U 293  ]
+"257
 [e :U 289 ]
-"268
-}
-[; ;ourProject.c: 267: }
-[; ;ourProject.c: 268: }
-[e $U 292  ]
-"269
-[e :U 287 ]
-[; ;ourProject.c: 269: else {
+[; ;ourProject.c: 257: else {
 {
-[; ;ourProject.c: 271: if(update_timer >= 2) {
-"271
-[e $ ! >= _update_timer -> 2 `i 293  ]
-{
-[; ;ourProject.c: 272: execute_part2_radar();
-"272
-[e ( _execute_part2_radar ..  ]
-[; ;ourProject.c: 273: update_timer = 0;
-"273
-[e = _update_timer -> 0 `i ]
-"274
+[; ;ourProject.c: 258: Flags.b0 = 0;
+"258
+[e = . _Flags 0 -> -> 0 `i `uc ]
+"259
 }
 [e :U 293 ]
+[; ;ourProject.c: 259: }
+[; ;ourProject.c: 261: if(RCSTAbits.OERR) {
+"261
+[e $ ! != -> . . _RCSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 294  ]
+{
+[; ;ourProject.c: 262: RCSTAbits.CREN = 0;
+"262
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;ourProject.c: 263: RCSTAbits.CREN = 1;
+"263
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"264
+}
+[e :U 294 ]
+[; ;ourProject.c: 264: }
+[; ;ourProject.c: 267: if(TogglePart == 0) {
+"267
+[e $ ! == -> _TogglePart `i -> 0 `i 295  ]
+{
+[; ;ourProject.c: 270: if(update_timer >= 16) {
+"270
+[e $ ! >= _update_timer -> 16 `i 296  ]
+{
+[; ;ourProject.c: 271: temp_raw = adc_average_raw(ADC.CH1, 10U);
+"271
+[e = _temp_raw ( _adc_average_raw (2 , . _ADC 1 -> -> 10 `ui `uc ]
+[; ;ourProject.c: 272: temp_x10 = lm35_celsius_x10(temp_raw);
+"272
+[e = _temp_x10 ( _lm35_celsius_x10 (1 _temp_raw ]
+[; ;ourProject.c: 274: pot_raw = adc_average_raw(ADC.CH0, 10U);
+"274
+[e = _pot_raw ( _adc_average_raw (2 , . _ADC 0 -> -> 10 `ui `uc ]
+[; ;ourProject.c: 275: volt_mv = adc_raw_to_mv(pot_raw);
 "275
-}
-[e :U 292 ]
-[; ;ourProject.c: 274: }
-[; ;ourProject.c: 275: }
-[; ;ourProject.c: 277: update_timer++;
-"277
-[e ++ _update_timer -> 1 `i ]
-[; ;ourProject.c: 278: delay_ms(50);
+[e = _volt_mv ( _adc_raw_to_mv (1 _pot_raw ]
+[; ;ourProject.c: 276: volt_x10 = (volt_mv + 50U) / 100U;
+"276
+[e = _volt_x10 / + _volt_mv -> 50 `ui -> 100 `ui ]
+[; ;ourProject.c: 278: lcd_gotoxy(0, 0);
 "278
-[e ( _delay_ms (1 -> -> 50 `i `ui ]
-"279
-}
-[e :U 278 ]
-"187
-[e $U 279  ]
-[e :U 280 ]
-[; ;ourProject.c: 279: }
-[; ;ourProject.c: 281: return;
-"281
-[e $UE 277  ]
-[; ;ourProject.c: 282: }
-"282
-[e :UE 277 ]
-}
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;ourProject.c: 279: sprintf(Buffer, "T:%3u.%uC V:%u.%uV ",
+[; ;ourProject.c: 280: temp_x10 / 10U,
+[; ;ourProject.c: 281: temp_x10 % 10U,
+[; ;ourProject.c: 282: volt_x10 / 10U,
+[; ;ourProject.c: 283: volt_x10 % 10U);
+"283
+[e ( _sprintf (1 , , , , (. , &U _Buffer :s 2C / _temp_x10 -> 10 `ui % _temp_x10 -> 10 `ui / _volt_x10 -> 10 `ui % _volt_x10 -> 10 `ui ]
+[; ;ourProject.c: 284: lcd_puts(Buffer);
 "284
-[v _initTimer1 `(v ~T0 @X0 1 ef ]
-{
-[; ;ourProject.c: 284: void initTimer1(void) {
-[e :U _initTimer1 ]
-[f ]
-[; ;ourProject.c: 285: T1CON = 0x80;
+[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
+[; ;ourProject.c: 285: lcd_gotoxy(0, 1);
 "285
-[e = _T1CON -> -> 128 `i `uc ]
-[; ;ourProject.c: 286: PIR1bits.TMR1IF = 0;
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;ourProject.c: 286: update_timer = 0;
 "286
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 287: TMR1H = 0;
+[e = _update_timer -> 0 `i ]
 "287
-[e = _TMR1H -> -> 0 `i `uc ]
-[; ;ourProject.c: 288: TMR1L = 0;
-"288
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;ourProject.c: 289: }
-"289
-[e :UE 294 ]
-}
-"291
-[v _delay_us_var `(v ~T0 @X0 1 sf1`ui ]
-{
-[; ;ourProject.c: 291: static void delay_us_var(unsigned int us) {
-[e :U _delay_us_var ]
-[v _us `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;ourProject.c: 292: while(us >= 100U) {
-"292
-[e $U 296  ]
-[e :U 297 ]
-{
-[; ;ourProject.c: 293: _delay((unsigned long)((100)*(4000000UL/4000000.0)));
-"293
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
-[; ;ourProject.c: 294: us -= 100U;
-"294
-[e =- _us -> 100 `ui ]
-[; ;ourProject.c: 295: asm(" clrwdt");
-"295
-[; <"  clrwdt ;# ">
-"296
 }
 [e :U 296 ]
+[; ;ourProject.c: 287: }
+[; ;ourProject.c: 290: if(is_byte_available()){
+"290
+[e $ ! != -> ( _is_byte_available ..  `i -> -> -> 0 `i `uc `i 297  ]
+{
+[; ;ourProject.c: 291: receivedMsg = read_byte_no_lib();
+"291
+[e = _receivedMsg ( _read_byte_no_lib ..  ]
+[; ;ourProject.c: 292: send_byte_no_lib(receivedMsg);
 "292
-[e $ >= _us -> 100 `ui 297  ]
+[e ( _send_byte_no_lib (1 _receivedMsg ]
+[; ;ourProject.c: 294: if(receivedMsg == 'B') {
+"294
+[e $ ! == -> _receivedMsg `ui -> 66 `ui 298  ]
+{
+[; ;ourProject.c: 295: soundBuzzer();
+"295
+[e ( _soundBuzzer ..  ]
+"296
+}
 [e :U 298 ]
 [; ;ourProject.c: 296: }
-[; ;ourProject.c: 298: while(us >= 10U) {
-"298
-[e $U 299  ]
-[e :U 300 ]
-{
-[; ;ourProject.c: 299: _delay((unsigned long)((10)*(4000000UL/4000000.0)));
+[; ;ourProject.c: 299: if(counter >= 16){
 "299
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
-[; ;ourProject.c: 300: us -= 10U;
+[e $ ! >= -> _counter `i -> 16 `i 299  ]
+{
+[; ;ourProject.c: 300: lcd_clear_line(1);
 "300
-[e =- _us -> 10 `ui ]
-[; ;ourProject.c: 301: asm(" clrwdt");
+[e ( _lcd_clear_line (1 -> -> 1 `i `uc ]
+[; ;ourProject.c: 301: counter = 0;
 "301
-[; <"  clrwdt ;# ">
+[e = _counter -> -> 0 `i `s ]
 "302
 }
 [e :U 299 ]
-"298
-[e $ >= _us -> 10 `ui 300  ]
-[e :U 301 ]
 [; ;ourProject.c: 302: }
-[; ;ourProject.c: 304: while(us > 0U) {
+[; ;ourProject.c: 304: lcd_gotoxy(counter, 1);
 "304
-[e $U 302  ]
-[e :U 303 ]
-{
-[; ;ourProject.c: 305: _delay((unsigned long)((1)*(4000000UL/4000000.0)));
+[e ( _lcd_gotoxy (2 , -> _counter `uc -> -> 1 `i `uc ]
+[; ;ourProject.c: 305: lcd_putc(receivedMsg);
 "305
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
-[; ;ourProject.c: 306: us--;
+[e ( _lcd_putc (1 _receivedMsg ]
+[; ;ourProject.c: 306: counter++;
 "306
-[e -- _us -> -> 1 `i `ui ]
-[; ;ourProject.c: 307: asm(" clrwdt");
-"307
-[; <"  clrwdt ;# ">
+[e ++ _counter -> -> 1 `i `s ]
 "308
 }
-[e :U 302 ]
-"304
-[e $ > _us -> 0 `ui 303  ]
-[e :U 304 ]
+[e :U 297 ]
+"309
+}
 [; ;ourProject.c: 308: }
 [; ;ourProject.c: 309: }
-"309
-[e :UE 295 ]
+[e $U 300  ]
+"310
+[e :U 295 ]
+[; ;ourProject.c: 310: else {
+{
+[; ;ourProject.c: 312: if(update_timer >= 2) {
+"312
+[e $ ! >= _update_timer -> 2 `i 301  ]
+{
+[; ;ourProject.c: 313: execute_part2_radar();
+"313
+[e ( _execute_part2_radar ..  ]
+[; ;ourProject.c: 314: update_timer = 0;
+"314
+[e = _update_timer -> 0 `i ]
+"315
 }
-"311
+[e :U 301 ]
+"316
+}
+[e :U 300 ]
+[; ;ourProject.c: 315: }
+[; ;ourProject.c: 316: }
+[; ;ourProject.c: 318: update_timer++;
+"318
+[e ++ _update_timer -> 1 `i ]
+[; ;ourProject.c: 319: delay_ms(50);
+"319
+[e ( _delay_ms (1 -> -> 50 `i `ui ]
+"320
+}
+[e :U 286 ]
+"228
+[e $U 287  ]
+[e :U 288 ]
+[; ;ourProject.c: 320: }
+[; ;ourProject.c: 322: return;
+"322
+[e $UE 285  ]
+[; ;ourProject.c: 323: }
+"323
+[e :UE 285 ]
+}
+"325
+[v _initTimer1 `(v ~T0 @X0 1 ef ]
+{
+[; ;ourProject.c: 325: void initTimer1(void) {
+[e :U _initTimer1 ]
+[f ]
+[; ;ourProject.c: 326: T1CON = 0x80;
+"326
+[e = _T1CON -> -> 128 `i `uc ]
+[; ;ourProject.c: 327: PIR1bits.TMR1IF = 0;
+"327
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 328: TMR1H = 0;
+"328
+[e = _TMR1H -> -> 0 `i `uc ]
+[; ;ourProject.c: 329: TMR1L = 0;
+"329
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;ourProject.c: 330: }
+"330
+[e :UE 302 ]
+}
+"332
+[v _initServoTimer3 `(v ~T0 @X0 1 ef ]
+{
+[; ;ourProject.c: 332: void initServoTimer3(void) {
+[e :U _initServoTimer3 ]
+[f ]
+"333
+[v _reload_value `ul ~T0 @X0 1 a ]
+[; ;ourProject.c: 333: unsigned long reload_value;
+[; ;ourProject.c: 335: T3CON = 0x80;
+"335
+[e = _T3CON -> -> 128 `i `uc ]
+[; ;ourProject.c: 336: ServoEnabled = 0;
+"336
+[e = _ServoEnabled -> -> 0 `i `uc ]
+[; ;ourProject.c: 337: ServoPulseHigh = 0;
+"337
+[e = _ServoPulseHigh -> -> 0 `i `uc ]
+[; ;ourProject.c: 338: ServoPulseUs = 1000U;
+"338
+[e = _ServoPulseUs -> 1000 `ui ]
+[; ;ourProject.c: 339: LATCbits.LATC1 = 0;
+"339
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 341: reload_value = 65536UL - (unsigned long)20000U;
+"341
+[e = _reload_value - -> 65536 `ul -> -> 20000 `ui `ul ]
+[; ;ourProject.c: 342: TMR3H = (unsigned char)(reload_value >> 8);
+"342
+[e = _TMR3H -> >> _reload_value -> 8 `i `uc ]
+[; ;ourProject.c: 343: TMR3L = (unsigned char)reload_value;
+"343
+[e = _TMR3L -> _reload_value `uc ]
+[; ;ourProject.c: 345: PIR2bits.TMR3IF = 0;
+"345
+[e = . . _PIR2bits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 346: PIE2bits.TMR3IE = 1;
+"346
+[e = . . _PIE2bits 0 1 -> -> 1 `i `uc ]
+[; ;ourProject.c: 347: RCONbits.IPEN = 0;
+"347
+[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+[; ;ourProject.c: 348: INTCONbits.PEIE = 1;
+"348
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;ourProject.c: 349: INTCONbits.GIE = 1;
+"349
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;ourProject.c: 350: T3CONbits.TMR3ON = 1;
+"350
+[e = . . _T3CONbits 1 0 -> -> 1 `i `uc ]
+[; ;ourProject.c: 351: }
+"351
+[e :UE 303 ]
+}
+"353
+[v _delay_us_var `(v ~T0 @X0 1 sf1`ui ]
+{
+[; ;ourProject.c: 353: static void delay_us_var(unsigned int us) {
+[e :U _delay_us_var ]
+[v _us `ui ~T0 @X0 1 r1 ]
+[f ]
+[; ;ourProject.c: 354: while(us >= 100U) {
+"354
+[e $U 305  ]
+[e :U 306 ]
+{
+[; ;ourProject.c: 355: _delay((unsigned long)((100)*(4000000UL/4000000.0)));
+"355
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
+[; ;ourProject.c: 356: us -= 100U;
+"356
+[e =- _us -> 100 `ui ]
+[; ;ourProject.c: 357: asm(" clrwdt");
+"357
+[; <"  clrwdt ;# ">
+"358
+}
+[e :U 305 ]
+"354
+[e $ >= _us -> 100 `ui 306  ]
+[e :U 307 ]
+[; ;ourProject.c: 358: }
+[; ;ourProject.c: 360: while(us >= 10U) {
+"360
+[e $U 308  ]
+[e :U 309 ]
+{
+[; ;ourProject.c: 361: _delay((unsigned long)((10)*(4000000UL/4000000.0)));
+"361
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
+[; ;ourProject.c: 362: us -= 10U;
+"362
+[e =- _us -> 10 `ui ]
+[; ;ourProject.c: 363: asm(" clrwdt");
+"363
+[; <"  clrwdt ;# ">
+"364
+}
+[e :U 308 ]
+"360
+[e $ >= _us -> 10 `ui 309  ]
+[e :U 310 ]
+[; ;ourProject.c: 364: }
+[; ;ourProject.c: 366: while(us > 0U) {
+"366
+[e $U 311  ]
+[e :U 312 ]
+{
+[; ;ourProject.c: 367: _delay((unsigned long)((1)*(4000000UL/4000000.0)));
+"367
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
+[; ;ourProject.c: 368: us--;
+"368
+[e -- _us -> -> 1 `i `ui ]
+[; ;ourProject.c: 369: asm(" clrwdt");
+"369
+[; <"  clrwdt ;# ">
+"370
+}
+[e :U 311 ]
+"366
+[e $ > _us -> 0 `ui 312  ]
+[e :U 313 ]
+[; ;ourProject.c: 370: }
+[; ;ourProject.c: 371: }
+"371
+[e :UE 304 ]
+}
+"373
 [v _delay_ms_var `(v ~T0 @X0 1 sf1`ui ]
 {
-[; ;ourProject.c: 311: static void delay_ms_var(unsigned int ms) {
+[; ;ourProject.c: 373: static void delay_ms_var(unsigned int ms) {
 [e :U _delay_ms_var ]
 [v _ms `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;ourProject.c: 312: while(ms > 0U) {
-"312
-[e $U 306  ]
-[e :U 307 ]
+[; ;ourProject.c: 374: while(ms > 0U) {
+"374
+[e $U 315  ]
+[e :U 316 ]
 {
-[; ;ourProject.c: 313: _delay((unsigned long)((1)*(4000000UL/4000.0)));
-"313
+[; ;ourProject.c: 375: _delay((unsigned long)((1)*(4000000UL/4000.0)));
+"375
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
-[; ;ourProject.c: 314: ms--;
-"314
+[; ;ourProject.c: 376: ms--;
+"376
 [e -- _ms -> -> 1 `i `ui ]
-[; ;ourProject.c: 315: asm(" clrwdt");
-"315
+[; ;ourProject.c: 377: asm(" clrwdt");
+"377
 [; <"  clrwdt ;# ">
-"316
+"378
 }
-[e :U 306 ]
-"312
-[e $ > _ms -> 0 `ui 307  ]
-[e :U 308 ]
-[; ;ourProject.c: 316: }
-[; ;ourProject.c: 317: }
-"317
-[e :UE 305 ]
+[e :U 315 ]
+"374
+[e $ > _ms -> 0 `ui 316  ]
+[e :U 317 ]
+[; ;ourProject.c: 378: }
+[; ;ourProject.c: 379: }
+"379
+[e :UE 314 ]
 }
-"319
+"381
 [v _timer1_start_us `(v ~T0 @X0 1 sf ]
 {
-[; ;ourProject.c: 319: static void timer1_start_us(void) {
+[; ;ourProject.c: 381: static void timer1_start_us(void) {
 [e :U _timer1_start_us ]
 [f ]
-[; ;ourProject.c: 320: T1CON = 0x80;
-"320
+[; ;ourProject.c: 382: T1CON = 0x80;
+"382
 [e = _T1CON -> -> 128 `i `uc ]
-[; ;ourProject.c: 321: PIR1bits.TMR1IF = 0;
-"321
+[; ;ourProject.c: 383: PIR1bits.TMR1IF = 0;
+"383
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 322: TMR1H = 0;
-"322
+[; ;ourProject.c: 384: TMR1H = 0;
+"384
 [e = _TMR1H -> -> 0 `i `uc ]
-[; ;ourProject.c: 323: TMR1L = 0;
-"323
+[; ;ourProject.c: 385: TMR1L = 0;
+"385
 [e = _TMR1L -> -> 0 `i `uc ]
-[; ;ourProject.c: 324: T1CON = 0x81;
-"324
+[; ;ourProject.c: 386: T1CON = 0x81;
+"386
 [e = _T1CON -> -> 129 `i `uc ]
-[; ;ourProject.c: 325: }
-"325
-[e :UE 309 ]
+[; ;ourProject.c: 387: }
+"387
+[e :UE 318 ]
 }
-"327
+"389
 [v _timer1_stop `(v ~T0 @X0 1 sf ]
 {
-[; ;ourProject.c: 327: static void timer1_stop(void) {
+[; ;ourProject.c: 389: static void timer1_stop(void) {
 [e :U _timer1_stop ]
 [f ]
-[; ;ourProject.c: 328: T1CON = 0x80;
-"328
+[; ;ourProject.c: 390: T1CON = 0x80;
+"390
 [e = _T1CON -> -> 128 `i `uc ]
-[; ;ourProject.c: 329: }
-"329
-[e :UE 310 ]
+[; ;ourProject.c: 391: }
+"391
+[e :UE 319 ]
 }
-"331
+"393
 [v _timer1_read_us `(ui ~T0 @X0 1 sf ]
 {
-[; ;ourProject.c: 331: static unsigned int timer1_read_us(void) {
+[; ;ourProject.c: 393: static unsigned int timer1_read_us(void) {
 [e :U _timer1_read_us ]
 [f ]
-"332
+"394
 [v _low_byte `uc ~T0 @X0 1 a ]
-"333
+"395
 [v _high_byte `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 332: unsigned char low_byte;
-[; ;ourProject.c: 333: unsigned char high_byte;
-[; ;ourProject.c: 335: low_byte = TMR1L;
-"335
+[; ;ourProject.c: 394: unsigned char low_byte;
+[; ;ourProject.c: 395: unsigned char high_byte;
+[; ;ourProject.c: 397: low_byte = TMR1L;
+"397
 [e = _low_byte _TMR1L ]
-[; ;ourProject.c: 336: high_byte = TMR1H;
-"336
+[; ;ourProject.c: 398: high_byte = TMR1H;
+"398
 [e = _high_byte _TMR1H ]
-[; ;ourProject.c: 338: return ((unsigned int)high_byte << 8) | low_byte;
-"338
+[; ;ourProject.c: 400: return ((unsigned int)high_byte << 8) | low_byte;
+"400
 [e ) | << -> _high_byte `ui -> 8 `i -> _low_byte `ui ]
-[e $UE 311  ]
-[; ;ourProject.c: 339: }
-"339
-[e :UE 311 ]
+[e $UE 320  ]
+[; ;ourProject.c: 401: }
+"401
+[e :UE 320 ]
 }
-"341
+"403
 [v _timer1_timeout `(uc ~T0 @X0 1 sf1`ui ]
 {
-[; ;ourProject.c: 341: static unsigned char timer1_timeout(unsigned int timeout_us) {
+[; ;ourProject.c: 403: static unsigned char timer1_timeout(unsigned int timeout_us) {
 [e :U _timer1_timeout ]
 [v _timeout_us `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;ourProject.c: 342: if(PIR1bits.TMR1IF) {
-"342
-[e $ ! != -> . . _PIR1bits 0 0 `i -> -> -> 0 `i `Vuc `i 313  ]
+[; ;ourProject.c: 404: if(PIR1bits.TMR1IF) {
+"404
+[e $ ! != -> . . _PIR1bits 0 0 `i -> -> -> 0 `i `Vuc `i 322  ]
 {
-[; ;ourProject.c: 343: return 1;
-"343
+[; ;ourProject.c: 405: return 1;
+"405
 [e ) -> -> 1 `i `uc ]
-[e $UE 312  ]
-"344
+[e $UE 321  ]
+"406
 }
-[e :U 313 ]
-[; ;ourProject.c: 344: }
-[; ;ourProject.c: 346: if(timer1_read_us() >= timeout_us) {
-"346
-[e $ ! >= ( _timer1_read_us ..  _timeout_us 314  ]
+[e :U 322 ]
+[; ;ourProject.c: 406: }
+[; ;ourProject.c: 408: if(timer1_read_us() >= timeout_us) {
+"408
+[e $ ! >= ( _timer1_read_us ..  _timeout_us 323  ]
 {
-[; ;ourProject.c: 347: return 1;
-"347
+[; ;ourProject.c: 409: return 1;
+"409
 [e ) -> -> 1 `i `uc ]
-[e $UE 312  ]
-"348
+[e $UE 321  ]
+"410
 }
-[e :U 314 ]
-[; ;ourProject.c: 348: }
-[; ;ourProject.c: 350: return 0;
-"350
+[e :U 323 ]
+[; ;ourProject.c: 410: }
+[; ;ourProject.c: 412: return 0;
+"412
 [e ) -> -> 0 `i `uc ]
-[e $UE 312  ]
-[; ;ourProject.c: 351: }
-"351
-[e :UE 312 ]
+[e $UE 321  ]
+[; ;ourProject.c: 413: }
+"413
+[e :UE 321 ]
 }
-"353
+"415
 [v _adc_average_raw `(ui ~T0 @X0 1 sf2`uc`uc ]
 {
-[; ;ourProject.c: 353: static unsigned int adc_average_raw(unsigned char channel, unsigned char samples) {
+[; ;ourProject.c: 415: static unsigned int adc_average_raw(unsigned char channel, unsigned char samples) {
 [e :U _adc_average_raw ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [v _samples `uc ~T0 @X0 1 r2 ]
 [f ]
-"354
+"416
 [v _sum `ul ~T0 @X0 1 a ]
-"355
+"417
 [v _i `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 354: unsigned long sum;
-[; ;ourProject.c: 355: unsigned char i;
-[; ;ourProject.c: 357: sum = 0;
-"357
+[; ;ourProject.c: 416: unsigned long sum;
+[; ;ourProject.c: 417: unsigned char i;
+[; ;ourProject.c: 419: sum = 0;
+"419
 [e = _sum -> -> -> 0 `i `l `ul ]
-[; ;ourProject.c: 360: readADC_raw(channel);
-"360
+[; ;ourProject.c: 422: readADC_raw(channel);
+"422
 [e ( _readADC_raw (1 _channel ]
-[; ;ourProject.c: 361: delay_ms(2);
-"361
+[; ;ourProject.c: 423: delay_ms(2);
+"423
 [e ( _delay_ms (1 -> -> 2 `i `ui ]
-[; ;ourProject.c: 363: for(i = 0; i < samples; i++) {
-"363
+[; ;ourProject.c: 425: for(i = 0; i < samples; i++) {
+"425
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 319  ]
-[e :U 316 ]
+[e $U 328  ]
+[e :U 325 ]
 {
-[; ;ourProject.c: 364: sum += (unsigned int)readADC_raw(channel);
-"364
+[; ;ourProject.c: 426: sum += (unsigned int)readADC_raw(channel);
+"426
 [e =+ _sum -> -> ( _readADC_raw (1 _channel `ui `ul ]
-[; ;ourProject.c: 365: delay_ms(2);
-"365
+[; ;ourProject.c: 427: delay_ms(2);
+"427
 [e ( _delay_ms (1 -> -> 2 `i `ui ]
-"366
+"428
 }
-"363
+"425
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 319 ]
-[e $ < -> _i `i -> _samples `i 316  ]
-[e :U 317 ]
-"366
+[e :U 328 ]
+[e $ < -> _i `i -> _samples `i 325  ]
+[e :U 326 ]
+"428
 }
-[; ;ourProject.c: 366: }
-[; ;ourProject.c: 368: return (unsigned int)((sum + (samples / 2U)) / samples);
-"368
+[; ;ourProject.c: 428: }
+[; ;ourProject.c: 430: return (unsigned int)((sum + (samples / 2U)) / samples);
+"430
 [e ) -> / + _sum -> / -> _samples `ui -> 2 `ui `ul -> _samples `ul `ui ]
-[e $UE 315  ]
-[; ;ourProject.c: 369: }
-"369
-[e :UE 315 ]
+[e $UE 324  ]
+[; ;ourProject.c: 431: }
+"431
+[e :UE 324 ]
 }
-"371
+"433
 [v _adc_raw_to_mv `(ui ~T0 @X0 1 sf1`ui ]
 {
-[; ;ourProject.c: 371: static unsigned int adc_raw_to_mv(unsigned int raw_value) {
+[; ;ourProject.c: 433: static unsigned int adc_raw_to_mv(unsigned int raw_value) {
 [e :U _adc_raw_to_mv ]
 [v _raw_value `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;ourProject.c: 372: return (unsigned int)((((unsigned long)raw_value * 5000UL) + 511UL) / 1023UL);
-"372
+[; ;ourProject.c: 434: return (unsigned int)((((unsigned long)raw_value * 5000UL) + 511UL) / 1023UL);
+"434
 [e ) -> / + * -> _raw_value `ul -> 5000 `ul -> 511 `ul -> 1023 `ul `ui ]
-[e $UE 320  ]
-[; ;ourProject.c: 373: }
-"373
-[e :UE 320 ]
+[e $UE 329  ]
+[; ;ourProject.c: 435: }
+"435
+[e :UE 329 ]
 }
-"375
+"437
 [v _lm35_celsius_x10 `(ui ~T0 @X0 1 sf1`ui ]
 {
-[; ;ourProject.c: 375: static unsigned int lm35_celsius_x10(unsigned int raw_value) {
+[; ;ourProject.c: 437: static unsigned int lm35_celsius_x10(unsigned int raw_value) {
 [e :U _lm35_celsius_x10 ]
 [v _raw_value `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;ourProject.c: 377: return (unsigned int)((((unsigned long)raw_value * 5000UL) + 511UL) / 1023UL);
-"377
+[; ;ourProject.c: 439: return (unsigned int)((((unsigned long)raw_value * 5000UL) + 511UL) / 1023UL);
+"439
 [e ) -> / + * -> _raw_value `ul -> 5000 `ul -> 511 `ul -> 1023 `ul `ui ]
-[e $UE 321  ]
-[; ;ourProject.c: 378: }
-"378
-[e :UE 321 ]
+[e $UE 330  ]
+[; ;ourProject.c: 440: }
+"440
+[e :UE 330 ]
 }
-"380
+"442
 [v _sort_samples `(v ~T0 @X0 1 sf2`*ui`uc ]
 {
-[; ;ourProject.c: 380: static void sort_samples(unsigned int samples[], unsigned char count) {
+[; ;ourProject.c: 442: static void sort_samples(unsigned int samples[], unsigned char count) {
 [e :U _sort_samples ]
 [v _samples `*ui ~T0 @X0 1 r1 ]
 [v _count `uc ~T0 @X0 1 r2 ]
 [f ]
-"381
+"443
 [v _i `uc ~T0 @X0 1 a ]
-"382
+"444
 [v _j `uc ~T0 @X0 1 a ]
-"383
+"445
 [v _temp `ui ~T0 @X0 1 a ]
-[; ;ourProject.c: 381: unsigned char i;
-[; ;ourProject.c: 382: unsigned char j;
-[; ;ourProject.c: 383: unsigned int temp;
-[; ;ourProject.c: 385: for(i = 0; i < count; i++) {
-"385
+[; ;ourProject.c: 443: unsigned char i;
+[; ;ourProject.c: 444: unsigned char j;
+[; ;ourProject.c: 445: unsigned int temp;
+[; ;ourProject.c: 447: for(i = 0; i < count; i++) {
+"447
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 326  ]
-[e :U 323 ]
+[e $U 335  ]
+[e :U 332 ]
 {
-[; ;ourProject.c: 386: for(j = i + 1; j < count; j++) {
-"386
+[; ;ourProject.c: 448: for(j = i + 1; j < count; j++) {
+"448
 {
 [e = _j -> + -> _i `i -> 1 `i `uc ]
-[e $U 330  ]
-[e :U 327 ]
+[e $U 339  ]
+[e :U 336 ]
 {
-[; ;ourProject.c: 387: if(samples[j] < samples[i]) {
-"387
-[e $ ! < *U + _samples * -> _j `ux -> -> # *U _samples `ui `ux *U + _samples * -> _i `ux -> -> # *U _samples `ui `ux 331  ]
+[; ;ourProject.c: 449: if(samples[j] < samples[i]) {
+"449
+[e $ ! < *U + _samples * -> _j `ux -> -> # *U _samples `ui `ux *U + _samples * -> _i `ux -> -> # *U _samples `ui `ux 340  ]
 {
-[; ;ourProject.c: 388: temp = samples[i];
-"388
+[; ;ourProject.c: 450: temp = samples[i];
+"450
 [e = _temp *U + _samples * -> _i `ux -> -> # *U _samples `ui `ux ]
-[; ;ourProject.c: 389: samples[i] = samples[j];
-"389
+[; ;ourProject.c: 451: samples[i] = samples[j];
+"451
 [e = *U + _samples * -> _i `ux -> -> # *U _samples `ui `ux *U + _samples * -> _j `ux -> -> # *U _samples `ui `ux ]
-[; ;ourProject.c: 390: samples[j] = temp;
-"390
+[; ;ourProject.c: 452: samples[j] = temp;
+"452
 [e = *U + _samples * -> _j `ux -> -> # *U _samples `ui `ux _temp ]
-"391
+"453
 }
-[e :U 331 ]
-"392
+[e :U 340 ]
+"454
 }
-"386
+"448
 [e ++ _j -> -> 1 `i `uc ]
-[e :U 330 ]
-[e $ < -> _j `i -> _count `i 327  ]
-[e :U 328 ]
-"392
+[e :U 339 ]
+[e $ < -> _j `i -> _count `i 336  ]
+[e :U 337 ]
+"454
 }
-"393
+"455
 }
-"385
+"447
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 326 ]
-[e $ < -> _i `i -> _count `i 323  ]
-[e :U 324 ]
-"393
+[e :U 335 ]
+[e $ < -> _i `i -> _count `i 332  ]
+[e :U 333 ]
+"455
 }
-[; ;ourProject.c: 391: }
-[; ;ourProject.c: 392: }
-[; ;ourProject.c: 393: }
-[; ;ourProject.c: 394: }
-"394
-[e :UE 322 ]
+[; ;ourProject.c: 453: }
+[; ;ourProject.c: 454: }
+[; ;ourProject.c: 455: }
+[; ;ourProject.c: 456: }
+"456
+[e :UE 331 ]
 }
-"396
+"458
 [v _buzzer_beep `(v ~T0 @X0 1 sf1`uc ]
 {
-[; ;ourProject.c: 396: static void buzzer_beep(unsigned char cycles) {
+[; ;ourProject.c: 458: static void buzzer_beep(unsigned char cycles) {
 [e :U _buzzer_beep ]
 [v _cycles `uc ~T0 @X0 1 r1 ]
 [f ]
-"397
+"459
 [v _i `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 397: unsigned char i;
-[; ;ourProject.c: 399: for(i = 0; i < cycles; i++) {
-"399
+[; ;ourProject.c: 459: unsigned char i;
+[; ;ourProject.c: 461: for(i = 0; i < cycles; i++) {
+"461
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 336  ]
-[e :U 333 ]
+[e $U 345  ]
+[e :U 342 ]
 {
-[; ;ourProject.c: 400: LATCbits.LATC2 = 1;
-"400
+[; ;ourProject.c: 462: LATCbits.LATC2 = 1;
+"462
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;ourProject.c: 401: _delay((unsigned long)((500)*(4000000UL/4000000.0)));
-"401
+[; ;ourProject.c: 463: _delay((unsigned long)((500)*(4000000UL/4000000.0)));
+"463
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
-[; ;ourProject.c: 402: LATCbits.LATC2 = 0;
-"402
+[; ;ourProject.c: 464: LATCbits.LATC2 = 0;
+"464
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 403: _delay((unsigned long)((500)*(4000000UL/4000000.0)));
-"403
+[; ;ourProject.c: 465: _delay((unsigned long)((500)*(4000000UL/4000000.0)));
+"465
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
-[; ;ourProject.c: 404: asm(" clrwdt");
-"404
+[; ;ourProject.c: 466: asm(" clrwdt");
+"466
 [; <"  clrwdt ;# ">
-"405
+"467
 }
-"399
+"461
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 336 ]
-[e $ < -> _i `i -> _cycles `i 333  ]
-[e :U 334 ]
-"405
+[e :U 345 ]
+[e $ < -> _i `i -> _cycles `i 342  ]
+[e :U 343 ]
+"467
 }
-[; ;ourProject.c: 405: }
-[; ;ourProject.c: 407: LATCbits.LATC2 = 0;
-"407
+[; ;ourProject.c: 467: }
+[; ;ourProject.c: 469: LATCbits.LATC2 = 0;
+"469
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 408: }
-"408
-[e :UE 332 ]
+[; ;ourProject.c: 470: }
+"470
+[e :UE 341 ]
 }
-"410
+"472
 [v _servo_angle_to_us `(ui ~T0 @X0 1 sf1`uc ]
 {
-[; ;ourProject.c: 410: static unsigned int servo_angle_to_us(unsigned char angle) {
+[; ;ourProject.c: 472: static unsigned int servo_angle_to_us(unsigned char angle) {
 [e :U _servo_angle_to_us ]
 [v _angle `uc ~T0 @X0 1 r1 ]
 [f ]
-"411
+"473
 [v _pulse_us `ul ~T0 @X0 1 a ]
-[; ;ourProject.c: 411: unsigned long pulse_us;
-[; ;ourProject.c: 413: if(angle > 180U) {
-"413
-[e $ ! > -> _angle `ui -> 180 `ui 338  ]
+[; ;ourProject.c: 473: unsigned long pulse_us;
+[; ;ourProject.c: 475: if(angle > 180U) {
+"475
+[e $ ! > -> _angle `ui -> 180 `ui 347  ]
 {
-[; ;ourProject.c: 414: angle = 180U;
-"414
+[; ;ourProject.c: 476: angle = 180U;
+"476
 [e = _angle -> -> 180 `ui `uc ]
-"415
+"477
 }
-[e :U 338 ]
-[; ;ourProject.c: 415: }
-[; ;ourProject.c: 417: pulse_us = 1000U;
-"417
+[e :U 347 ]
+[; ;ourProject.c: 477: }
+[; ;ourProject.c: 479: pulse_us = 1000U;
+"479
 [e = _pulse_us -> -> 1000 `ui `ul ]
-[; ;ourProject.c: 418: pulse_us += ((unsigned long)angle * (2000U - 1000U)) / 180U;
-"418
+[; ;ourProject.c: 480: pulse_us += ((unsigned long)angle * (2000U - 1000U)) / 180U;
+"480
 [e =+ _pulse_us / * -> _angle `ul -> - -> 2000 `ui -> 1000 `ui `ul -> -> 180 `ui `ul ]
-[; ;ourProject.c: 420: return (unsigned int)pulse_us;
-"420
+[; ;ourProject.c: 482: return (unsigned int)pulse_us;
+"482
 [e ) -> _pulse_us `ui ]
-[e $UE 337  ]
-[; ;ourProject.c: 421: }
-"421
-[e :UE 337 ]
+[e $UE 346  ]
+[; ;ourProject.c: 483: }
+"483
+[e :UE 346 ]
 }
-"423
-[v _servo_pulse_us `(v ~T0 @X0 1 sf1`ui ]
-{
-[; ;ourProject.c: 423: static void servo_pulse_us(unsigned int pulse_us) {
-[e :U _servo_pulse_us ]
-[v _pulse_us `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;ourProject.c: 424: LATCbits.LATC1 = 1;
-"424
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;ourProject.c: 425: delay_us_var(pulse_us);
-"425
-[e ( _delay_us_var (1 _pulse_us ]
-[; ;ourProject.c: 426: LATCbits.LATC1 = 0;
-"426
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;ourProject.c: 428: if(pulse_us < 20000U) {
-"428
-[e $ ! < _pulse_us -> 20000 `ui 340  ]
-{
-[; ;ourProject.c: 429: delay_us_var(20000U - pulse_us);
-"429
-[e ( _delay_us_var (1 - -> 20000 `ui _pulse_us ]
-"430
-}
-[e :U 340 ]
-[; ;ourProject.c: 430: }
-[; ;ourProject.c: 431: }
-"431
-[e :UE 339 ]
-}
-"433
+"485
 [v _servo_set_angle `(v ~T0 @X0 1 sf1`uc ]
 {
-[; ;ourProject.c: 433: static void servo_set_angle(unsigned char angle) {
+[; ;ourProject.c: 485: static void servo_set_angle(unsigned char angle) {
 [e :U _servo_set_angle ]
 [v _angle `uc ~T0 @X0 1 r1 ]
 [f ]
-"434
-[v _i `uc ~T0 @X0 1 a ]
-"435
+"486
 [v _pulse_us `ui ~T0 @X0 1 a ]
-[; ;ourProject.c: 434: unsigned char i;
-[; ;ourProject.c: 435: unsigned int pulse_us;
-[; ;ourProject.c: 437: pulse_us = servo_angle_to_us(angle);
-"437
+"487
+[v _tmr3ie `uc ~T0 @X0 1 a ]
+[; ;ourProject.c: 486: unsigned int pulse_us;
+[; ;ourProject.c: 487: unsigned char tmr3ie;
+[; ;ourProject.c: 489: pulse_us = servo_angle_to_us(angle);
+"489
 [e = _pulse_us ( _servo_angle_to_us (1 _angle ]
-[; ;ourProject.c: 439: for(i = 0; i < 8U; i++) {
-"439
+[; ;ourProject.c: 490: ServoAngle = angle;
+"490
+[e = _ServoAngle _angle ]
+[; ;ourProject.c: 492: tmr3ie = PIE2bits.TMR3IE;
+"492
+[e = _tmr3ie . . _PIE2bits 0 1 ]
+[; ;ourProject.c: 493: PIE2bits.TMR3IE = 0;
+"493
+[e = . . _PIE2bits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 494: ServoPulseUs = pulse_us;
+"494
+[e = _ServoPulseUs _pulse_us ]
+[; ;ourProject.c: 495: PIE2bits.TMR3IE = tmr3ie;
+"495
+[e = . . _PIE2bits 0 1 _tmr3ie ]
+[; ;ourProject.c: 496: }
+"496
+[e :UE 348 ]
+}
+"498
+[v _servo_start `(v ~T0 @X0 1 sf ]
 {
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `ui -> 8 `ui 342  ]
-[e $U 343  ]
-[e :U 342 ]
+[; ;ourProject.c: 498: static void servo_start(void) {
+[e :U _servo_start ]
+[f ]
+"499
+[v _tmr3ie `uc ~T0 @X0 1 a ]
+"500
+[v _reload_value `ul ~T0 @X0 1 a ]
+[; ;ourProject.c: 499: unsigned char tmr3ie;
+[; ;ourProject.c: 500: unsigned long reload_value;
+[; ;ourProject.c: 502: tmr3ie = PIE2bits.TMR3IE;
+"502
+[e = _tmr3ie . . _PIE2bits 0 1 ]
+[; ;ourProject.c: 503: PIE2bits.TMR3IE = 0;
+"503
+[e = . . _PIE2bits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 504: T3CONbits.TMR3ON = 0;
+"504
+[e = . . _T3CONbits 1 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 506: ServoEnabled = 1;
+"506
+[e = _ServoEnabled -> -> 1 `i `uc ]
+[; ;ourProject.c: 507: ServoPulseHigh = 0;
+"507
+[e = _ServoPulseHigh -> -> 0 `i `uc ]
+[; ;ourProject.c: 508: LATCbits.LATC1 = 0;
+"508
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 510: reload_value = 65536UL - (unsigned long)100U;
+"510
+[e = _reload_value - -> 65536 `ul -> -> 100 `ui `ul ]
+[; ;ourProject.c: 511: TMR3H = (unsigned char)(reload_value >> 8);
+"511
+[e = _TMR3H -> >> _reload_value -> 8 `i `uc ]
+[; ;ourProject.c: 512: TMR3L = (unsigned char)reload_value;
+"512
+[e = _TMR3L -> _reload_value `uc ]
+[; ;ourProject.c: 514: PIR2bits.TMR3IF = 0;
+"514
+[e = . . _PIR2bits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 515: T3CONbits.TMR3ON = 1;
+"515
+[e = . . _T3CONbits 1 0 -> -> 1 `i `uc ]
+[; ;ourProject.c: 516: PIE2bits.TMR3IE = tmr3ie;
+"516
+[e = . . _PIE2bits 0 1 _tmr3ie ]
+[; ;ourProject.c: 517: }
+"517
+[e :UE 349 ]
+}
+"519
+[v _servo_stop `(v ~T0 @X0 1 sf ]
 {
-[; ;ourProject.c: 440: servo_pulse_us(pulse_us);
-"440
-[e ( _servo_pulse_us (1 _pulse_us ]
-"441
+[; ;ourProject.c: 519: static void servo_stop(void) {
+[e :U _servo_stop ]
+[f ]
+[; ;ourProject.c: 520: ServoEnabled = 0;
+"520
+[e = _ServoEnabled -> -> 0 `i `uc ]
+[; ;ourProject.c: 521: ServoPulseHigh = 0;
+"521
+[e = _ServoPulseHigh -> -> 0 `i `uc ]
+[; ;ourProject.c: 522: LATCbits.LATC1 = 0;
+"522
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;ourProject.c: 523: }
+"523
+[e :UE 350 ]
 }
-"439
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `ui -> 8 `ui 342  ]
-[e :U 343 ]
-"441
-}
-[; ;ourProject.c: 441: }
-[; ;ourProject.c: 442: }
-"442
-[e :UE 341 ]
-}
-"444
+"525
 [v _radar_next_angle `(v ~T0 @X0 1 sf ]
 {
-[; ;ourProject.c: 444: static void radar_next_angle(void) {
+[; ;ourProject.c: 525: static void radar_next_angle(void) {
 [e :U _radar_next_angle ]
 [f ]
-[; ;ourProject.c: 445: if(ServoDirection > 0) {
-"445
-[e $ ! > -> _ServoDirection `i -> 0 `i 346  ]
+[; ;ourProject.c: 526: if(ServoDirection > 0) {
+"526
+[e $ ! > -> _ServoDirection `i -> 0 `i 352  ]
 {
-[; ;ourProject.c: 446: if(ServoAngle >= (180U - 5U)) {
-"446
-[e $ ! >= -> _ServoAngle `ui - -> 180 `ui -> 5 `ui 347  ]
+[; ;ourProject.c: 527: if(ServoAngle >= (180U - 2U)) {
+"527
+[e $ ! >= -> _ServoAngle `ui - -> 180 `ui -> 2 `ui 353  ]
 {
-[; ;ourProject.c: 447: ServoAngle = 180U;
-"447
+[; ;ourProject.c: 528: ServoAngle = 180U;
+"528
 [e = _ServoAngle -> -> 180 `ui `uc ]
-[; ;ourProject.c: 448: ServoDirection = -1;
-"448
+[; ;ourProject.c: 529: ServoDirection = -1;
+"529
 [e = _ServoDirection -> -U -> 1 `i `c ]
-"449
+"530
 }
-[; ;ourProject.c: 449: }
-[e $U 348  ]
-"450
-[e :U 347 ]
-[; ;ourProject.c: 450: else {
+[; ;ourProject.c: 530: }
+[e $U 354  ]
+"531
+[e :U 353 ]
+[; ;ourProject.c: 531: else {
 {
-[; ;ourProject.c: 451: ServoAngle += 5U;
-"451
-[e =+ _ServoAngle -> -> 5 `ui `uc ]
-"452
+[; ;ourProject.c: 532: ServoAngle += 2U;
+"532
+[e =+ _ServoAngle -> -> 2 `ui `uc ]
+"533
 }
-[e :U 348 ]
-"453
+[e :U 354 ]
+"534
 }
-[; ;ourProject.c: 452: }
-[; ;ourProject.c: 453: }
-[e $U 349  ]
-"454
-[e :U 346 ]
-[; ;ourProject.c: 454: else {
+[; ;ourProject.c: 533: }
+[; ;ourProject.c: 534: }
+[e $U 355  ]
+"535
+[e :U 352 ]
+[; ;ourProject.c: 535: else {
 {
-[; ;ourProject.c: 455: if(ServoAngle <= 5U) {
-"455
-[e $ ! <= -> _ServoAngle `ui -> 5 `ui 350  ]
+[; ;ourProject.c: 536: if(ServoAngle <= 2U) {
+"536
+[e $ ! <= -> _ServoAngle `ui -> 2 `ui 356  ]
 {
-[; ;ourProject.c: 456: ServoAngle = 0;
-"456
+[; ;ourProject.c: 537: ServoAngle = 0;
+"537
 [e = _ServoAngle -> -> 0 `i `uc ]
-[; ;ourProject.c: 457: ServoDirection = 1;
-"457
+[; ;ourProject.c: 538: ServoDirection = 1;
+"538
 [e = _ServoDirection -> -> 1 `i `c ]
-"458
+"539
 }
-[; ;ourProject.c: 458: }
-[e $U 351  ]
-"459
-[e :U 350 ]
-[; ;ourProject.c: 459: else {
+[; ;ourProject.c: 539: }
+[e $U 357  ]
+"540
+[e :U 356 ]
+[; ;ourProject.c: 540: else {
 {
-[; ;ourProject.c: 460: ServoAngle -= 5U;
-"460
-[e =- _ServoAngle -> -> 5 `ui `uc ]
-"461
+[; ;ourProject.c: 541: ServoAngle -= 2U;
+"541
+[e =- _ServoAngle -> -> 2 `ui `uc ]
+"542
 }
-[e :U 351 ]
-"462
+[e :U 357 ]
+"543
 }
-[e :U 349 ]
-[; ;ourProject.c: 461: }
-[; ;ourProject.c: 462: }
-[; ;ourProject.c: 463: }
-"463
-[e :UE 345 ]
+[e :U 355 ]
+[; ;ourProject.c: 542: }
+[; ;ourProject.c: 543: }
+[; ;ourProject.c: 544: }
+"544
+[e :UE 351 ]
 }
-"465
+"546
 [v _hcsr04_read_once `(uc ~T0 @X0 1 sf1`*ui ]
 {
-[; ;ourProject.c: 465: static unsigned char hcsr04_read_once(unsigned int *distance_cm) {
+[; ;ourProject.c: 546: static unsigned char hcsr04_read_once(unsigned int *distance_cm) {
 [e :U _hcsr04_read_once ]
 [v _distance_cm `*ui ~T0 @X0 1 r1 ]
 [f ]
-"466
+"547
 [v _pulse_us `ui ~T0 @X0 1 a ]
-"467
+"548
 [v _cm `ui ~T0 @X0 1 a ]
-[; ;ourProject.c: 466: unsigned int pulse_us;
-[; ;ourProject.c: 467: unsigned int cm;
-[; ;ourProject.c: 470: timer1_start_us();
-"470
+[; ;ourProject.c: 547: unsigned int pulse_us;
+[; ;ourProject.c: 548: unsigned int cm;
+[; ;ourProject.c: 551: timer1_start_us();
+"551
 [e ( _timer1_start_us ..  ]
-[; ;ourProject.c: 471: while(PORTCbits.RC3) {
-"471
-[e $U 353  ]
-[e :U 354 ]
-{
-[; ;ourProject.c: 472: if(timer1_timeout(30000U)) {
-"472
-[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 356  ]
-{
-[; ;ourProject.c: 473: timer1_stop();
-"473
-[e ( _timer1_stop ..  ]
-[; ;ourProject.c: 474: return 0;
-"474
-[e ) -> -> 0 `i `uc ]
-[e $UE 352  ]
-"475
-}
-[e :U 356 ]
-[; ;ourProject.c: 475: }
-[; ;ourProject.c: 476: asm(" clrwdt");
-"476
-[; <"  clrwdt ;# ">
-"477
-}
-[e :U 353 ]
-"471
-[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 354  ]
-[e :U 355 ]
-[; ;ourProject.c: 477: }
-[; ;ourProject.c: 478: timer1_stop();
-"478
-[e ( _timer1_stop ..  ]
-[; ;ourProject.c: 480: LATCbits.LATC0 = 0;
-"480
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 481: delay_us_var(2);
-"481
-[e ( _delay_us_var (1 -> -> 2 `i `ui ]
-[; ;ourProject.c: 482: LATCbits.LATC0 = 1;
-"482
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-[; ;ourProject.c: 483: delay_us_var(10);
-"483
-[e ( _delay_us_var (1 -> -> 10 `i `ui ]
-[; ;ourProject.c: 484: LATCbits.LATC0 = 0;
-"484
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 486: timer1_start_us();
-"486
-[e ( _timer1_start_us ..  ]
-[; ;ourProject.c: 487: while(!PORTCbits.RC3) {
-"487
-[e $U 357  ]
-[e :U 358 ]
-{
-[; ;ourProject.c: 488: if(timer1_timeout(30000U)) {
-"488
-[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 360  ]
-{
-[; ;ourProject.c: 489: timer1_stop();
-"489
-[e ( _timer1_stop ..  ]
-[; ;ourProject.c: 490: return 0;
-"490
-[e ) -> -> 0 `i `uc ]
-[e $UE 352  ]
-"491
-}
+[; ;ourProject.c: 552: while(PORTCbits.RC3) {
+"552
+[e $U 359  ]
 [e :U 360 ]
-[; ;ourProject.c: 491: }
-[; ;ourProject.c: 492: asm(" clrwdt");
-"492
-[; <"  clrwdt ;# ">
-"493
+{
+[; ;ourProject.c: 553: if(timer1_timeout(30000U)) {
+"553
+[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 362  ]
+{
+[; ;ourProject.c: 554: timer1_stop();
+"554
+[e ( _timer1_stop ..  ]
+[; ;ourProject.c: 555: return 0;
+"555
+[e ) -> -> 0 `i `uc ]
+[e $UE 358  ]
+"556
 }
-[e :U 357 ]
-"487
-[e $ ! != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 358  ]
-[e :U 359 ]
-[; ;ourProject.c: 493: }
-[; ;ourProject.c: 495: timer1_start_us();
-"495
-[e ( _timer1_start_us ..  ]
-[; ;ourProject.c: 496: while(PORTCbits.RC3) {
-"496
-[e $U 361  ]
 [e :U 362 ]
-{
-[; ;ourProject.c: 497: if(timer1_timeout(30000U)) {
-"497
-[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 364  ]
-{
-[; ;ourProject.c: 498: timer1_stop();
-"498
-[e ( _timer1_stop ..  ]
-[; ;ourProject.c: 499: return 0;
-"499
-[e ) -> -> 0 `i `uc ]
-[e $UE 352  ]
-"500
-}
-[e :U 364 ]
-[; ;ourProject.c: 500: }
-[; ;ourProject.c: 501: asm(" clrwdt");
-"501
+[; ;ourProject.c: 556: }
+[; ;ourProject.c: 557: asm(" clrwdt");
+"557
 [; <"  clrwdt ;# ">
-"502
+"558
 }
+[e :U 359 ]
+"552
+[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 360  ]
 [e :U 361 ]
-"496
-[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 362  ]
-[e :U 363 ]
-[; ;ourProject.c: 502: }
-[; ;ourProject.c: 503: timer1_stop();
-"503
+[; ;ourProject.c: 558: }
+[; ;ourProject.c: 559: timer1_stop();
+"559
 [e ( _timer1_stop ..  ]
-[; ;ourProject.c: 505: pulse_us = timer1_read_us();
-"505
-[e = _pulse_us ( _timer1_read_us ..  ]
-[; ;ourProject.c: 506: cm = (pulse_us + 29U) / 58U;
-"506
-[e = _cm / + _pulse_us -> 29 `ui -> 58 `ui ]
-[; ;ourProject.c: 508: if(cm < 3U || cm > 60U) {
-"508
-[e $ ! || < _cm -> 3 `ui > _cm -> 60 `ui 365  ]
+[; ;ourProject.c: 561: LATCbits.LATC0 = 0;
+"561
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 562: delay_us_var(2);
+"562
+[e ( _delay_us_var (1 -> -> 2 `i `ui ]
+[; ;ourProject.c: 563: LATCbits.LATC0 = 1;
+"563
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;ourProject.c: 564: delay_us_var(10);
+"564
+[e ( _delay_us_var (1 -> -> 10 `i `ui ]
+[; ;ourProject.c: 565: LATCbits.LATC0 = 0;
+"565
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;ourProject.c: 567: timer1_start_us();
+"567
+[e ( _timer1_start_us ..  ]
+[; ;ourProject.c: 568: while(!PORTCbits.RC3) {
+"568
+[e $U 363  ]
+[e :U 364 ]
 {
-[; ;ourProject.c: 509: return 0;
-"509
+[; ;ourProject.c: 569: if(timer1_timeout(30000U)) {
+"569
+[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 366  ]
+{
+[; ;ourProject.c: 570: timer1_stop();
+"570
+[e ( _timer1_stop ..  ]
+[; ;ourProject.c: 571: return 0;
+"571
 [e ) -> -> 0 `i `uc ]
-[e $UE 352  ]
-"510
+[e $UE 358  ]
+"572
 }
+[e :U 366 ]
+[; ;ourProject.c: 572: }
+[; ;ourProject.c: 573: asm(" clrwdt");
+"573
+[; <"  clrwdt ;# ">
+"574
+}
+[e :U 363 ]
+"568
+[e $ ! != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 364  ]
 [e :U 365 ]
-[; ;ourProject.c: 510: }
-[; ;ourProject.c: 512: *distance_cm = cm;
-"512
-[e = *U _distance_cm _cm ]
-[; ;ourProject.c: 513: return 1;
-"513
-[e ) -> -> 1 `i `uc ]
-[e $UE 352  ]
-[; ;ourProject.c: 514: }
-"514
-[e :UE 352 ]
+[; ;ourProject.c: 574: }
+[; ;ourProject.c: 576: timer1_start_us();
+"576
+[e ( _timer1_start_us ..  ]
+[; ;ourProject.c: 577: while(PORTCbits.RC3) {
+"577
+[e $U 367  ]
+[e :U 368 ]
+{
+[; ;ourProject.c: 578: if(timer1_timeout(30000U)) {
+"578
+[e $ ! != -> ( _timer1_timeout (1 -> 30000 `ui `i -> -> -> 0 `i `uc `i 370  ]
+{
+[; ;ourProject.c: 579: timer1_stop();
+"579
+[e ( _timer1_stop ..  ]
+[; ;ourProject.c: 580: return 0;
+"580
+[e ) -> -> 0 `i `uc ]
+[e $UE 358  ]
+"581
 }
-"516
+[e :U 370 ]
+[; ;ourProject.c: 581: }
+[; ;ourProject.c: 582: asm(" clrwdt");
+"582
+[; <"  clrwdt ;# ">
+"583
+}
+[e :U 367 ]
+"577
+[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 368  ]
+[e :U 369 ]
+[; ;ourProject.c: 583: }
+[; ;ourProject.c: 584: timer1_stop();
+"584
+[e ( _timer1_stop ..  ]
+[; ;ourProject.c: 586: pulse_us = timer1_read_us();
+"586
+[e = _pulse_us ( _timer1_read_us ..  ]
+[; ;ourProject.c: 587: cm = (pulse_us + 29U) / 58U;
+"587
+[e = _cm / + _pulse_us -> 29 `ui -> 58 `ui ]
+[; ;ourProject.c: 589: if(cm < 3U || cm > 60U) {
+"589
+[e $ ! || < _cm -> 3 `ui > _cm -> 60 `ui 371  ]
+{
+[; ;ourProject.c: 590: return 0;
+"590
+[e ) -> -> 0 `i `uc ]
+[e $UE 358  ]
+"591
+}
+[e :U 371 ]
+[; ;ourProject.c: 591: }
+[; ;ourProject.c: 593: *distance_cm = cm;
+"593
+[e = *U _distance_cm _cm ]
+[; ;ourProject.c: 594: return 1;
+"594
+[e ) -> -> 1 `i `uc ]
+[e $UE 358  ]
+[; ;ourProject.c: 595: }
+"595
+[e :UE 358 ]
+}
+"597
 [v _hcsr04_read_filtered `(uc ~T0 @X0 1 sf1`*ui ]
 {
-[; ;ourProject.c: 516: static unsigned char hcsr04_read_filtered(unsigned int *distance_cm) {
+[; ;ourProject.c: 597: static unsigned char hcsr04_read_filtered(unsigned int *distance_cm) {
 [e :U _hcsr04_read_filtered ]
 [v _distance_cm `*ui ~T0 @X0 1 r1 ]
 [f ]
-"517
+"598
 [v _samples `ui ~T0 @X0 -> 3 `i a ]
-"518
+"599
 [v _reading `ui ~T0 @X0 1 a ]
-"519
+"600
 [v _lower_delta `ui ~T0 @X0 1 a ]
-"520
+"601
 [v _upper_delta `ui ~T0 @X0 1 a ]
-"521
+"602
 [v _valid `uc ~T0 @X0 1 a ]
-"522
+"603
 [v _i `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 517: unsigned int samples[3];
-[; ;ourProject.c: 518: unsigned int reading;
-[; ;ourProject.c: 519: unsigned int lower_delta;
-[; ;ourProject.c: 520: unsigned int upper_delta;
-[; ;ourProject.c: 521: unsigned char valid;
-[; ;ourProject.c: 522: unsigned char i;
-[; ;ourProject.c: 524: valid = 0;
-"524
+[; ;ourProject.c: 598: unsigned int samples[3];
+[; ;ourProject.c: 599: unsigned int reading;
+[; ;ourProject.c: 600: unsigned int lower_delta;
+[; ;ourProject.c: 601: unsigned int upper_delta;
+[; ;ourProject.c: 602: unsigned char valid;
+[; ;ourProject.c: 603: unsigned char i;
+[; ;ourProject.c: 605: valid = 0;
+"605
 [e = _valid -> -> 0 `i `uc ]
-[; ;ourProject.c: 526: for(i = 0; i < 3U; i++) {
-"526
+[; ;ourProject.c: 607: for(i = 0; i < 3U; i++) {
+"607
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `ui -> 3 `ui 367  ]
-[e $U 368  ]
-[e :U 367 ]
-{
-[; ;ourProject.c: 527: if(hcsr04_read_once(&reading)) {
-"527
-[e $ ! != -> ( _hcsr04_read_once (1 &U _reading `i -> -> -> 0 `i `uc `i 370  ]
-{
-[; ;ourProject.c: 528: samples[valid] = reading;
-"528
-[e = *U + &U _samples * -> _valid `ux -> -> # *U &U _samples `ui `ux _reading ]
-[; ;ourProject.c: 529: valid++;
-"529
-[e ++ _valid -> -> 1 `i `uc ]
-"530
-}
-[e :U 370 ]
-[; ;ourProject.c: 530: }
-[; ;ourProject.c: 531: delay_ms_var(60U);
-"531
-[e ( _delay_ms_var (1 -> 60 `ui ]
-"532
-}
-"526
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `ui -> 3 `ui 367  ]
-[e :U 368 ]
-"532
-}
-[; ;ourProject.c: 532: }
-[; ;ourProject.c: 534: if(valid < 3U) {
-"534
-[e $ ! < -> _valid `ui -> 3 `ui 371  ]
-{
-[; ;ourProject.c: 535: if(valid == 2) {
-"535
-[e $ ! == -> _valid `i -> 2 `i 372  ]
-{
-[; ;ourProject.c: 536: sort_samples(samples, valid);
-"536
-[e ( _sort_samples (2 , &U _samples _valid ]
-[; ;ourProject.c: 537: if((samples[1] - samples[0]) <= 8U) {
-"537
-[e $ ! <= - *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 8 `ui 373  ]
-{
-[; ;ourProject.c: 538: *distance_cm = (samples[0] + samples[1] + 1U) / 2U;
-"538
-[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
-[; ;ourProject.c: 539: return 1;
-"539
-[e ) -> -> 1 `i `uc ]
-[e $UE 366  ]
-"540
-}
+[e $ < -> _i `ui -> 3 `ui 373  ]
+[e $U 374  ]
 [e :U 373 ]
-"541
-}
-[e :U 372 ]
-[; ;ourProject.c: 540: }
-[; ;ourProject.c: 541: }
-[; ;ourProject.c: 543: return 0;
-"543
-[e ) -> -> 0 `i `uc ]
-[e $UE 366  ]
-"544
-}
-[e :U 371 ]
-[; ;ourProject.c: 544: }
-[; ;ourProject.c: 546: sort_samples(samples, valid);
-"546
-[e ( _sort_samples (2 , &U _samples _valid ]
-[; ;ourProject.c: 548: if((samples[2] - samples[0]) > 8U) {
-"548
-[e $ ! > - *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 8 `ui 374  ]
 {
-[; ;ourProject.c: 549: lower_delta = samples[1] - samples[0];
-"549
-[e = _lower_delta - *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
-[; ;ourProject.c: 550: upper_delta = samples[2] - samples[1];
-"550
-[e = _upper_delta - *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
-[; ;ourProject.c: 552: if(lower_delta <= 8U && lower_delta <= upper_delta) {
-"552
-[e $ ! && <= _lower_delta -> 8 `ui <= _lower_delta _upper_delta 375  ]
+[; ;ourProject.c: 608: if(hcsr04_read_once(&reading)) {
+"608
+[e $ ! != -> ( _hcsr04_read_once (1 &U _reading `i -> -> -> 0 `i `uc `i 376  ]
 {
-[; ;ourProject.c: 553: *distance_cm = (samples[0] + samples[1] + 1U) / 2U;
-"553
-[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
-[; ;ourProject.c: 554: return 1;
-"554
-[e ) -> -> 1 `i `uc ]
-[e $UE 366  ]
-"555
-}
-[e :U 375 ]
-[; ;ourProject.c: 555: }
-[; ;ourProject.c: 557: if(upper_delta <= 8U) {
-"557
-[e $ ! <= _upper_delta -> 8 `ui 376  ]
-{
-[; ;ourProject.c: 558: *distance_cm = (samples[1] + samples[2] + 1U) / 2U;
-"558
-[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
-[; ;ourProject.c: 559: return 1;
-"559
-[e ) -> -> 1 `i `uc ]
-[e $UE 366  ]
-"560
+[; ;ourProject.c: 609: samples[valid] = reading;
+"609
+[e = *U + &U _samples * -> _valid `ux -> -> # *U &U _samples `ui `ux _reading ]
+[; ;ourProject.c: 610: valid++;
+"610
+[e ++ _valid -> -> 1 `i `uc ]
+"611
 }
 [e :U 376 ]
-[; ;ourProject.c: 560: }
-[; ;ourProject.c: 562: return 0;
-"562
-[e ) -> -> 0 `i `uc ]
-[e $UE 366  ]
-"563
-}
-[e :U 374 ]
-[; ;ourProject.c: 563: }
-[; ;ourProject.c: 565: *distance_cm = samples[1];
-"565
-[e = *U _distance_cm *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
-[; ;ourProject.c: 566: return 1;
-"566
-[e ) -> -> 1 `i `uc ]
-[e $UE 366  ]
-[; ;ourProject.c: 567: }
-"567
-[e :UE 366 ]
-}
-"569
-[v _execute_part2_radar `(v ~T0 @X0 1 sf ]
-{
-[; ;ourProject.c: 569: static void execute_part2_radar(void) {
-[e :U _execute_part2_radar ]
-[f ]
-"570
-[v _Buffer `uc ~T0 @X0 -> 17 `i a ]
-"571
-[v _SerialBuffer `uc ~T0 @X0 -> 24 `i a ]
-"572
-[v _distance_cm `ui ~T0 @X0 1 a ]
-"573
-[v _angle_now `uc ~T0 @X0 1 a ]
-[; ;ourProject.c: 570: char Buffer[17];
-[; ;ourProject.c: 571: char SerialBuffer[24];
-[; ;ourProject.c: 572: unsigned int distance_cm;
-[; ;ourProject.c: 573: unsigned char angle_now;
-[; ;ourProject.c: 575: angle_now = ServoAngle;
-"575
-[e = _angle_now _ServoAngle ]
-[; ;ourProject.c: 576: sprintf(SerialBuffer, "M,%u,%u\r\n", angle_now, (unsigned int)(8U * (20000U / 1000U)));
-"576
-[e ( _sprintf (1 , , (. , &U _SerialBuffer :s 3C -> _angle_now `i * -> 8 `ui / -> 20000 `ui -> 1000 `ui ]
-[; ;ourProject.c: 577: send_string_no_lib(SerialBuffer);
-"577
-[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
-[; ;ourProject.c: 579: servo_set_angle(angle_now);
-"579
-[e ( _servo_set_angle (1 _angle_now ]
-[; ;ourProject.c: 580: delay_ms_var(70U);
-"580
-[e ( _delay_ms_var (1 -> 70 `ui ]
-[; ;ourProject.c: 582: lcd_gotoxy(0, 0);
-"582
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;ourProject.c: 583: if(hcsr04_read_filtered(&distance_cm)) {
-"583
-[e $ ! != -> ( _hcsr04_read_filtered (1 &U _distance_cm `i -> -> -> 0 `i `uc `i 378  ]
-{
-[; ;ourProject.c: 584: sprintf(Buffer, "A:%3u D:%3u cm  ", angle_now, distance_cm);
-"584
-[e ( _sprintf (1 , , (. , &U _Buffer :s 4C -> _angle_now `i _distance_cm ]
-[; ;ourProject.c: 585: lcd_puts(Buffer);
-"585
-[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
-[; ;ourProject.c: 586: sprintf(SerialBuffer, "%u,%u\r\n", angle_now, distance_cm);
-"586
-[e ( _sprintf (1 , , (. , &U _SerialBuffer :s 5C -> _angle_now `i _distance_cm ]
-[; ;ourProject.c: 587: send_string_no_lib(SerialBuffer);
-"587
-[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
-[; ;ourProject.c: 589: if(distance_cm <= 10U) {
-"589
-[e $ ! <= _distance_cm -> 10 `ui 379  ]
-{
-[; ;ourProject.c: 590: LATBbits.LATB2 = 1;
-"590
-[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
-[; ;ourProject.c: 591: lcd_gotoxy(0, 1);
-"591
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;ourProject.c: 592: lcd_puts("Near Alert      ");
-"592
-[e ( _lcd_puts (1 :s 6C ]
-[; ;ourProject.c: 593: buzzer_beep(80U);
-"593
-[e ( _buzzer_beep (1 -> -> 80 `ui `uc ]
-[; ;ourProject.c: 594: delay_ms_var(120);
-"594
-[e ( _delay_ms_var (1 -> -> 120 `i `ui ]
-"595
-}
-[; ;ourProject.c: 595: }
-[e $U 380  ]
-"596
-[e :U 379 ]
-[; ;ourProject.c: 596: else {
-{
-[; ;ourProject.c: 597: LATBbits.LATB2 = 0;
-"597
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 598: LATCbits.LATC2 = 0;
-"598
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 599: lcd_gotoxy(0, 1);
-"599
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;ourProject.c: 600: lcd_puts("Radar Sweep     ");
-"600
-[e ( _lcd_puts (1 :s 7C ]
-"601
-}
-[e :U 380 ]
-"602
-}
-[; ;ourProject.c: 601: }
-[; ;ourProject.c: 602: }
-[e $U 381  ]
-"603
-[e :U 378 ]
-[; ;ourProject.c: 603: else {
-{
-[; ;ourProject.c: 604: LATBbits.LATB2 = 0;
-"604
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 605: LATCbits.LATC2 = 0;
-"605
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 606: sprintf(Buffer, "A:%3u D:---     ", angle_now);
-"606
-[e ( _sprintf (1 , (. , &U _Buffer :s 8C -> _angle_now `i ]
-[; ;ourProject.c: 607: lcd_puts(Buffer);
-"607
-[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
-[; ;ourProject.c: 608: sprintf(SerialBuffer, "%u,0\r\n", angle_now);
-"608
-[e ( _sprintf (1 , (. , &U _SerialBuffer :s 9C -> _angle_now `i ]
-[; ;ourProject.c: 609: send_string_no_lib(SerialBuffer);
-"609
-[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
-[; ;ourProject.c: 610: lcd_gotoxy(0, 1);
-"610
-[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;ourProject.c: 611: lcd_puts("Radar Sweep     ");
-"611
-[e ( _lcd_puts (1 :s 10C ]
+[; ;ourProject.c: 611: }
+[; ;ourProject.c: 612: delay_ms_var(25U);
 "612
+[e ( _delay_ms_var (1 -> 25 `ui ]
+"613
+}
+"607
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `ui -> 3 `ui 373  ]
+[e :U 374 ]
+"613
+}
+[; ;ourProject.c: 613: }
+[; ;ourProject.c: 615: if(valid < 3U) {
+"615
+[e $ ! < -> _valid `ui -> 3 `ui 377  ]
+{
+[; ;ourProject.c: 616: if(valid == 2) {
+"616
+[e $ ! == -> _valid `i -> 2 `i 378  ]
+{
+[; ;ourProject.c: 617: sort_samples(samples, valid);
+"617
+[e ( _sort_samples (2 , &U _samples _valid ]
+[; ;ourProject.c: 618: if((samples[1] - samples[0]) <= 8U) {
+"618
+[e $ ! <= - *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 8 `ui 379  ]
+{
+[; ;ourProject.c: 619: *distance_cm = (samples[0] + samples[1] + 1U) / 2U;
+"619
+[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
+[; ;ourProject.c: 620: return 1;
+"620
+[e ) -> -> 1 `i `uc ]
+[e $UE 372  ]
+"621
+}
+[e :U 379 ]
+"622
+}
+[e :U 378 ]
+[; ;ourProject.c: 621: }
+[; ;ourProject.c: 622: }
+[; ;ourProject.c: 624: return 0;
+"624
+[e ) -> -> 0 `i `uc ]
+[e $UE 372  ]
+"625
+}
+[e :U 377 ]
+[; ;ourProject.c: 625: }
+[; ;ourProject.c: 627: sort_samples(samples, valid);
+"627
+[e ( _sort_samples (2 , &U _samples _valid ]
+[; ;ourProject.c: 629: if((samples[2] - samples[0]) > 8U) {
+"629
+[e $ ! > - *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 8 `ui 380  ]
+{
+[; ;ourProject.c: 630: lower_delta = samples[1] - samples[0];
+"630
+[e = _lower_delta - *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
+[; ;ourProject.c: 631: upper_delta = samples[2] - samples[1];
+"631
+[e = _upper_delta - *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
+[; ;ourProject.c: 633: if(lower_delta <= 8U && lower_delta <= upper_delta) {
+"633
+[e $ ! && <= _lower_delta -> 8 `ui <= _lower_delta _upper_delta 381  ]
+{
+[; ;ourProject.c: 634: *distance_cm = (samples[0] + samples[1] + 1U) / 2U;
+"634
+[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 0 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
+[; ;ourProject.c: 635: return 1;
+"635
+[e ) -> -> 1 `i `uc ]
+[e $UE 372  ]
+"636
 }
 [e :U 381 ]
-[; ;ourProject.c: 612: }
-[; ;ourProject.c: 614: radar_next_angle();
-"614
-[e ( _radar_next_angle ..  ]
-[; ;ourProject.c: 615: }
-"615
-[e :UE 377 ]
+[; ;ourProject.c: 636: }
+[; ;ourProject.c: 638: if(upper_delta <= 8U) {
+"638
+[e $ ! <= _upper_delta -> 8 `ui 382  ]
+{
+[; ;ourProject.c: 639: *distance_cm = (samples[1] + samples[2] + 1U) / 2U;
+"639
+[e = *U _distance_cm / + + *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux *U + &U _samples * -> -> -> 2 `i `ui `ux -> -> # *U &U _samples `ui `ux -> 1 `ui -> 2 `ui ]
+[; ;ourProject.c: 640: return 1;
+"640
+[e ) -> -> 1 `i `uc ]
+[e $UE 372  ]
+"641
 }
-"618
+[e :U 382 ]
+[; ;ourProject.c: 641: }
+[; ;ourProject.c: 643: return 0;
+"643
+[e ) -> -> 0 `i `uc ]
+[e $UE 372  ]
+"644
+}
+[e :U 380 ]
+[; ;ourProject.c: 644: }
+[; ;ourProject.c: 646: *distance_cm = samples[1];
+"646
+[e = *U _distance_cm *U + &U _samples * -> -> -> 1 `i `ui `ux -> -> # *U &U _samples `ui `ux ]
+[; ;ourProject.c: 647: return 1;
+"647
+[e ) -> -> 1 `i `uc ]
+[e $UE 372  ]
+[; ;ourProject.c: 648: }
+"648
+[e :UE 372 ]
+}
+"650
+[v _execute_part2_radar `(v ~T0 @X0 1 sf ]
+{
+[; ;ourProject.c: 650: static void execute_part2_radar(void) {
+[e :U _execute_part2_radar ]
+[f ]
+"651
+[v _Buffer `uc ~T0 @X0 -> 17 `i a ]
+"652
+[v _SerialBuffer `uc ~T0 @X0 -> 24 `i a ]
+"653
+[v _distance_cm `ui ~T0 @X0 1 a ]
+"654
+[v _angle_now `uc ~T0 @X0 1 a ]
+[; ;ourProject.c: 651: char Buffer[17];
+[; ;ourProject.c: 652: char SerialBuffer[24];
+[; ;ourProject.c: 653: unsigned int distance_cm;
+[; ;ourProject.c: 654: unsigned char angle_now;
+[; ;ourProject.c: 656: angle_now = ServoAngle;
+"656
+[e = _angle_now _ServoAngle ]
+[; ;ourProject.c: 657: sprintf(SerialBuffer, "M,%u,%u\r\n", angle_now, (unsigned int)40U);
+"657
+[e ( _sprintf (1 , , (. , &U _SerialBuffer :s 3C -> _angle_now `i -> 40 `ui ]
+[; ;ourProject.c: 658: send_string_no_lib(SerialBuffer);
+"658
+[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
+[; ;ourProject.c: 660: servo_set_angle(angle_now);
+"660
+[e ( _servo_set_angle (1 _angle_now ]
+[; ;ourProject.c: 661: delay_ms_var(40U);
+"661
+[e ( _delay_ms_var (1 -> 40 `ui ]
+[; ;ourProject.c: 663: lcd_gotoxy(0, 0);
+"663
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;ourProject.c: 664: if(hcsr04_read_filtered(&distance_cm)) {
+"664
+[e $ ! != -> ( _hcsr04_read_filtered (1 &U _distance_cm `i -> -> -> 0 `i `uc `i 384  ]
+{
+[; ;ourProject.c: 665: sprintf(Buffer, "A:%3u D:%3u cm  ", angle_now, distance_cm);
+"665
+[e ( _sprintf (1 , , (. , &U _Buffer :s 4C -> _angle_now `i _distance_cm ]
+[; ;ourProject.c: 666: lcd_puts(Buffer);
+"666
+[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
+[; ;ourProject.c: 667: sprintf(SerialBuffer, "%u,%u\r\n", angle_now, distance_cm);
+"667
+[e ( _sprintf (1 , , (. , &U _SerialBuffer :s 5C -> _angle_now `i _distance_cm ]
+[; ;ourProject.c: 668: send_string_no_lib(SerialBuffer);
+"668
+[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
+[; ;ourProject.c: 670: if(distance_cm <= 10U) {
+"670
+[e $ ! <= _distance_cm -> 10 `ui 385  ]
+{
+[; ;ourProject.c: 671: LATBbits.LATB2 = 1;
+"671
+[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
+[; ;ourProject.c: 672: lcd_gotoxy(0, 1);
+"672
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;ourProject.c: 673: lcd_puts("Near Alert      ");
+"673
+[e ( _lcd_puts (1 :s 6C ]
+[; ;ourProject.c: 674: buzzer_beep(80U);
+"674
+[e ( _buzzer_beep (1 -> -> 80 `ui `uc ]
+[; ;ourProject.c: 675: delay_ms_var(120);
+"675
+[e ( _delay_ms_var (1 -> -> 120 `i `ui ]
+"676
+}
+[; ;ourProject.c: 676: }
+[e $U 386  ]
+"677
+[e :U 385 ]
+[; ;ourProject.c: 677: else {
+{
+[; ;ourProject.c: 678: LATBbits.LATB2 = 0;
+"678
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 679: LATCbits.LATC2 = 0;
+"679
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 680: lcd_gotoxy(0, 1);
+"680
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;ourProject.c: 681: lcd_puts("Radar Sweep     ");
+"681
+[e ( _lcd_puts (1 :s 7C ]
+"682
+}
+[e :U 386 ]
+"683
+}
+[; ;ourProject.c: 682: }
+[; ;ourProject.c: 683: }
+[e $U 387  ]
+"684
+[e :U 384 ]
+[; ;ourProject.c: 684: else {
+{
+[; ;ourProject.c: 685: LATBbits.LATB2 = 0;
+"685
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 686: LATCbits.LATC2 = 0;
+"686
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;ourProject.c: 687: sprintf(Buffer, "A:%3u D:---     ", angle_now);
+"687
+[e ( _sprintf (1 , (. , &U _Buffer :s 8C -> _angle_now `i ]
+[; ;ourProject.c: 688: lcd_puts(Buffer);
+"688
+[e ( _lcd_puts (1 -> &U _Buffer `*Cuc ]
+[; ;ourProject.c: 689: sprintf(SerialBuffer, "%u,0\r\n", angle_now);
+"689
+[e ( _sprintf (1 , (. , &U _SerialBuffer :s 9C -> _angle_now `i ]
+[; ;ourProject.c: 690: send_string_no_lib(SerialBuffer);
+"690
+[e ( _send_string_no_lib (1 -> &U _SerialBuffer `*Cuc ]
+[; ;ourProject.c: 691: lcd_gotoxy(0, 1);
+"691
+[e ( _lcd_gotoxy (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;ourProject.c: 692: lcd_puts("Radar Sweep     ");
+"692
+[e ( _lcd_puts (1 :s 10C ]
+"693
+}
+[e :U 387 ]
+[; ;ourProject.c: 693: }
+[; ;ourProject.c: 695: radar_next_angle();
+"695
+[e ( _radar_next_angle ..  ]
+[; ;ourProject.c: 696: servo_set_angle(ServoAngle);
+"696
+[e ( _servo_set_angle (1 _ServoAngle ]
+[; ;ourProject.c: 697: }
+"697
+[e :UE 383 ]
+}
+"700
 [v _initPorts `(v ~T0 @X0 1 ef ]
 {
-[; ;ourProject.c: 618: void initPorts(void){
+[; ;ourProject.c: 700: void initPorts(void){
 [e :U _initPorts ]
 [f ]
-[; ;ourProject.c: 620: INTCON = 0;
-"620
+[; ;ourProject.c: 702: INTCON = 0;
+"702
 [e = _INTCON -> -> 0 `i `uc ]
-[; ;ourProject.c: 621: INTCON2 = 0;
-"621
+[; ;ourProject.c: 703: INTCON2 = 0;
+"703
 [e = _INTCON2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 623: CMCON = 0x07;
-"623
+[; ;ourProject.c: 705: CMCON = 0x07;
+"705
 [e = _CMCON -> -> 7 `i `uc ]
-[; ;ourProject.c: 624: CVRCON = 0x00;
-"624
+[; ;ourProject.c: 706: CVRCON = 0x00;
+"706
 [e = _CVRCON -> -> 0 `i `uc ]
-[; ;ourProject.c: 625: ADCON1 = 0x0D;
-"625
+[; ;ourProject.c: 707: ADCON1 = 0x0D;
+"707
 [e = _ADCON1 -> -> 13 `i `uc ]
-[; ;ourProject.c: 626: LATA = LATB = LATC = LATD = LATE = 0;
-"626
+[; ;ourProject.c: 708: LATA = LATB = LATC = LATD = LATE = 0;
+"708
 [e = _LATA = _LATB = _LATC = _LATD = _LATE -> -> 0 `i `uc ]
-[; ;ourProject.c: 627: TRISA = 0xFF;
-"627
+[; ;ourProject.c: 709: TRISA = 0xFF;
+"709
 [e = _TRISA -> -> 255 `i `uc ]
-[; ;ourProject.c: 628: TRISB = 0xFB;
-"628
+[; ;ourProject.c: 710: TRISB = 0xFB;
+"710
 [e = _TRISB -> -> 251 `i `uc ]
-[; ;ourProject.c: 629: TRISD = TRISE = 0;
-"629
+[; ;ourProject.c: 711: TRISD = TRISE = 0;
+"711
 [e = _TRISD = _TRISE -> -> 0 `i `uc ]
-[; ;ourProject.c: 630: TRISC = 0x88;
-"630
+[; ;ourProject.c: 712: TRISC = 0x88;
+"712
 [e = _TRISC -> -> 136 `i `uc ]
-[; ;ourProject.c: 631: LATCbits.LATC0 = 0;
-"631
+[; ;ourProject.c: 713: LATCbits.LATC0 = 0;
+"713
 [e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;ourProject.c: 632: LATCbits.LATC1 = 0;
-"632
+[; ;ourProject.c: 714: LATCbits.LATC1 = 0;
+"714
 [e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;ourProject.c: 633: LATBbits.LATB2 = 0;
-"633
+[; ;ourProject.c: 715: LATBbits.LATB2 = 0;
+"715
 [e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 634: LATCbits.LATC2 = 0;
-"634
+[; ;ourProject.c: 716: LATCbits.LATC2 = 0;
+"716
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;ourProject.c: 635: }
-"635
-[e :UE 382 ]
+[; ;ourProject.c: 717: }
+"717
+[e :UE 388 ]
 }
 [p f _sprintf 8422400 ]
 [a 1C 83 116 97 114 116 105 110 103 46 46 46 0 ]
