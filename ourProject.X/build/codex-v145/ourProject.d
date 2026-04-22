@@ -1,1 +1,0 @@
- build/codex-v145/ourProject.d  build/codex-v145/ourProject.p1:  ourProject.c adc_channels.h lcd_x8.h my_ser.h my_debounce.h our_project.h my_adc.h

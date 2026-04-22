@@ -1,1 +1,0 @@
- build/codex-v145/my_adc.d  build/codex-v145/my_adc.p1:  my_adc.c my_adc.h

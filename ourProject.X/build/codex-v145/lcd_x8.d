@@ -1,1 +1,0 @@
- build/codex-v145/lcd_x8.d  build/codex-v145/lcd_x8.p1:  lcd_x8.c lcd_x8.h

@@ -1,1 +1,0 @@
- build/codex-v145/doprnt.d  build/codex-v145/doprnt.p1:  C:/Program\ Files\ (x86)/Microchip/xc8/v1.45/sources/common/doprnt.c
